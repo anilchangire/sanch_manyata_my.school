@@ -681,7 +681,7 @@
   </div>
 
   <div class="sign-section">
-    <div>मुख्याध्यापकाची स्वाक्षरी व शिक्का</div>
+    <div><span id="hmSignLabel1">मुख्याध्यापकाची</span> स्वाक्षरी व शिक्का</div>
     <div>केंद्रप्रमुखाची स्वाक्षरी व नाव</div>
   </div>
 
@@ -690,7 +690,7 @@
   <div class="undertaking-sheet">
     
     <div class="doc-header-box">
-      <h2>मुख्याध्यापकांचे हमीपत्र / शपथपत्र (संचमान्यता २०२६-२७ करिता)</h2>
+      <h2><span id="undDocTitle">मुख्याध्यापकांचे</span> हमीपत्र / शपथपत्र (संचमान्यता २०२६-२७ करिता)</h2>
     </div>
 
     <div class="school-info-row">
@@ -709,7 +709,7 @@
     <div class="declaration-title">घोषणापत्र / हमीपत्र :-</div>
 
     <div class="declaration-intro">
-      मी खाली सही करणारी/करणार <b><span class="dynamic-val" id="dispHmName">श्री.एम.व्ही.कराड</span></b> मुख्याध्यापक, <b><span class="dynamic-val" id="dispDeclSchoolName">बालाघाट विद्यालय दौनापूर</span></b> असे हमीपत्र व शपथपत्र लिहून देतो की......
+      मी खाली सही <span id="declVerbSign">करणार</span> <b><span class="dynamic-val" id="dispHmName">श्री.एम.व्ही.कराड</span></b> <span id="declDesignation">मुख्याध्यापक</span>, <b><span class="dynamic-val" id="dispDeclSchoolName">बालाघाट विद्यालय दौनापूर</span></b> असे हमीपत्र व शपथपत्र लिहून <span id="declVerbGive">देतो</span> की......
     </div>
 
     <ol class="rules-list">
@@ -719,10 +719,10 @@
       <li>माहे सप्टेंबर 2026 च्या विद्यार्थी हजेरी पत्रकात या सर्व प्रवेशित विद्यार्थ्यांची हजेरी नियमितपणे नोंदविण्यात आलेली आहे.</li>
       <li>
         आमच्या शाळेचे संचमान्यतेसाठी सरल प्रणालीत एकुण 
-        <input type="text" class="student-count-input" id="studentTotalCount" placeholder="....................">
+        <input type="text" class="student-count-input" id="studentTotalCount" placeholder="0">
         विद्यार्थी केंद्र प्रमुख यांच्या LOGIN ला FORWARD केले असून ते सर्व शाळेच्या प्रवेश निर्गम व विद्यार्थी हजेरी पत्रक यावर नोंदलेले आहेत.
       </li>
-      <li>माझ्या माहितीप्रमाणे व शाळेतील रेकॉर्डनुसार स्टुडंट्स पोर्टलवर संचमान्यतेसाठी फॉरवर्ड केलेल्या विद्यार्थी संख्येत कसलीही अनियमितता नाही. संचमान्यतेसाठी पाठविलेल्या या विद्यार्थी संख्येबाबत भविष्यात कोणताही आक्षेप उद्भवल्यास किंवा कोणतीही तफावत आढळून आल्यास, त्यास मी मुख्याध्यापक वैयक्तिकरित्या व सर्वस्वी जबाबदार राहीन, याची मी हमी देतो.</li>
+      <li>माझ्या माहितीप्रमाणे व शाळेतील रेकॉर्डनुसार स्टुडंट्स पोर्टलवर संचमान्यतेसाठी फॉरवर्ड केलेल्या विद्यार्थी संख्येत कसलीही अनियमितता नाही. संचमान्यतेसाठी पाठविलेल्या या विद्यार्थी संख्येबाबत भविष्यात कोणताही आक्षेप उद्भवल्यास किंवा कोणतीही तफावत आढळून आल्यास, त्यास मी <span id="rule6Designation">मुख्याध्यापक</span> वैयक्तिकरित्या व सर्वस्वी जबाबदार राहीन, याची मी हमी <span id="rule6Verb">देतो</span>.</li>
     </ol>
 
     <div class="footer-section">
@@ -730,7 +730,7 @@
         दि. &nbsp;<span id="undFooterDate">______/10/2026</span>
       </div>
       <div class="footer-right">
-        मुख्याध्यापक सही
+        <span id="footerHmSign">मुख्याध्यापक</span> सही
       </div>
     </div>
 
@@ -782,6 +782,39 @@
     document.getElementById('undFooterDate').innerText = formattedDate;
   }
 
+  // लिंग ओळखून स्त्रीलिंगी / पुल्लिंगी व्याकरण व क्रियापदे बदलणारे फंक्शन
+  function applyGenderGrammar(hmName) {
+    var isFemale = false;
+    if (hmName) {
+      // नावात 'श्रीमती', 'सौ', किंवा 'कु.' असल्यास
+      if (hmName.indexOf('श्रीमती') !== -1 || hmName.indexOf('सौ.') !== -1 || hmName.indexOf('कु.') !== -1) {
+        isFemale = true;
+      }
+    }
+
+    if (isFemale) {
+      // स्त्रीलिंगी रूपे
+      document.getElementById('hmSignLabel1').innerText = "मुख्याध्यापिकेची";
+      document.getElementById('undDocTitle').innerText = "मुख्याध्यापिकेचे";
+      document.getElementById('declVerbSign').innerText = "करणारी";
+      document.getElementById('declDesignation').innerText = "मुख्याध्यापिका";
+      document.getElementById('declVerbGive').innerText = "देते";
+      document.getElementById('rule6Designation').innerText = "मुख्याध्यापिका";
+      document.getElementById('rule6Verb').innerText = "देते";
+      document.getElementById('footerHmSign').innerText = "मुख्याध्यापिका";
+    } else {
+      // पुल्लिंगी रूपे
+      document.getElementById('hmSignLabel1').innerText = "मुख्याध्यापकाची";
+      document.getElementById('undDocTitle').innerText = "मुख्याध्यापकांचे";
+      document.getElementById('declVerbSign').innerText = "करणार";
+      document.getElementById('declDesignation').innerText = "मुख्याध्यापक";
+      document.getElementById('declVerbGive').innerText = "देतो";
+      document.getElementById('rule6Designation').innerText = "मुख्याध्यापक";
+      document.getElementById('rule6Verb').innerText = "देतो";
+      document.getElementById('footerHmSign').innerText = "मुख्याध्यापक";
+    }
+  }
+
   function handleSchoolChange() {
     var select = document.getElementById('schoolName');
     var selectedOption = select.options[select.selectedIndex];
@@ -798,6 +831,9 @@
     document.getElementById('dispHmName').innerText = hm || '______________';
     document.getElementById('dispDeclSchoolName').innerText = sName || '______________';
     updateUndertakingDate();
+
+    // लिंगानुसार व्याकरण लागू करणे
+    applyGenderGrammar(hm);
 
     if (udise) {
       loadSavedSchoolData(udise);
@@ -885,7 +921,6 @@
     calculateTotals();
   }
 
-  // इनपुटमधून बाहेर आल्यावर रिकामा असेल तर शून्य भरणे
   function fillZeroIfEmpty(inputElem) {
     if (inputElem.value.trim() === '') {
       inputElem.value = '0';
@@ -893,7 +928,6 @@
     }
   }
 
-  // सर्व रिकाम्या रकान्यांमध्ये शून्य भरणे व तपासणे
   function ensureAllFieldsFilled() {
     var hasEmpty = false;
     for (var i = 0; i < activeClasses.length; i++) {
@@ -903,7 +937,7 @@
         var elem = document.getElementById(fields[f]);
         if (elem && elem.value.trim() === '') {
           hasEmpty = true;
-          elem.value = '0'; // आपोआप 0 भरणे
+          elem.value = '0';
         }
       }
     }
@@ -987,7 +1021,6 @@
       return false;
     }
 
-    // सर्व रिकाम्या रकान्यांत ० भरले जाईल
     ensureAllFieldsFilled();
 
     var formData = {

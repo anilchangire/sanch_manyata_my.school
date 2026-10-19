@@ -1,1 +1,551 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>केंद्रप्रमुख शाळा भेट व संचमान्यता पट पडताळणी प्रपत्र</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 10px;
+      color: #111;
+    }
+    .form-container {
+      max-width: 850px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 20px 25px;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+    }
+    .header-section {
+      text-align: center;
+      border-bottom: 2px solid #222;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+    .header-section h2 {
+      margin: 0 0 5px 0;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .header-section h3 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 600;
+      color: #444;
+    }
+    .section-title {
+      font-size: 15px;
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 8px;
+      background: #eef2f7;
+      padding: 6px 10px;
+      border-left: 4px solid #1a73e8;
+    }
+    .grid-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+    .form-group input, .form-group textarea {
+      padding: 7px 10px;
+      font-size: 14px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      outline: none;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: #1a73e8;
+      box-shadow: 0 0 4px rgba(26,115,232,0.3);
+    }
+    .table-container {
+      overflow-x: auto;
+      margin-bottom: 15px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      background: #fff;
+    }
+    table, th, td {
+      border: 1px solid #222;
+    }
+    th, td {
+      padding: 6px 4px;
+      text-align: center;
+    }
+    th {
+      background-color: #f7f9fa;
+      font-weight: 600;
+    }
+    .num-input {
+      width: 100%;
+      min-width: 55px;
+      padding: 5px;
+      font-size: 13px;
+      text-align: center;
+      border: 1px solid #bbb;
+      border-radius: 3px;
+    }
+    .num-input:focus {
+      background-color: #fff9db;
+      border-color: #f59f00;
+    }
+    .diff-cell {
+      font-weight: bold;
+      background-color: #fafafa;
+    }
+    .diff-negative {
+      color: #d90429;
+      background-color: #ffe3e3;
+    }
+    .diff-positive {
+      color: #2b8a3e;
+      background-color: #ebfbee;
+    }
+    .total-row {
+      font-weight: bold;
+      background-color: #eaecef;
+    }
+    .checklist-table td {
+      padding: 8px;
+    }
+    .radio-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .radio-label {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 500;
+    }
+    .sign-section {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      padding: 0 20px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .btn-container {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 10px 22px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+    .btn-primary {
+      background-color: #1a73e8;
+      color: white;
+    }
+    .btn-success {
+      background-color: #2e7d32;
+      color: white;
+    }
+    .btn-secondary {
+      background-color: #e0e0e0;
+      color: #222;
+    }
+    @media (max-width: 600px) {
+      .grid-info {
+        grid-template-columns: 1fr;
+      }
+      .sign-section {
+        flex-direction: column;
+        gap: 35px;
+        text-align: center;
+      }
+    }
+    @media print {
+      body {
+        background: transparent;
+        padding: 0;
+      }
+      .form-container {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+      }
+      .btn-container {
+        display: none !important;
+      }
+      .num-input {
+        border: none;
+        background: transparent;
+      }
+      input, textarea {
+        border: none !important;
+        background: transparent !important;
+      }
+    }
+  </style>
+</head>
+<body>
 
+<div class="form-container" id="reportForm">
+  
+  <div class="header-section">
+    <h2>केंद्रप्रमुख शाळा भेट व संचमान्यता पट पडताळणी प्रपत्र</h2>
+    <h3>शैक्षणिक वर्ष: २०२६-२७</h3>
+  </div>
+
+  <div class="section-title">१. शाळेची प्राथमिक माहिती</div>
+  <div class="grid-info">
+    <div class="form-group" style="grid-column: span 2;">
+      <label>शाळेचे नाव व केंद्र:</label>
+      <input type="text" id="schoolName" value="संत तुकाराम विद्यालय नागापूर , केंद्र -कन्या नागापूर, ता.परळी वै. जि.बीड">
+    </div>
+    <div class="form-group">
+      <label>यु-डायस कोड:</label>
+      <input type="text" id="udiseCode" value="27270804004">
+    </div>
+    <div class="form-group">
+      <label>भेट दिनांक:</label>
+      <input type="date" id="visitDate">
+    </div>
+    <div class="form-group" style="grid-column: span 2;">
+      <label>मुख्याध्यापकांचे नाव:</label>
+      <input type="text" id="hmName" value="श्री. एन.पी.मुंडे">
+    </div>
+  </div>
+
+  <div class="section-title">२. वर्गवार विद्यार्थी पट व उपस्थिती पडताळणी</div>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 7%;">अ.क्र.</th>
+          <th style="width: 13%;">वर्ग</th>
+          <th>हजेरीपटावरील एकूण विद्यार्थी (Register)</th>
+          <th>सरल पोर्टलवरील एकूण विद्यार्थी</th>
+          <th>आधार प्रमाणित (Valid) विद्यार्थी</th>
+          <th>प्रत्यक्ष उपस्थित विद्यार्थी (भेटीच्या दिवशी)</th>
+          <th>तफावत (रजिस्टर - पोर्टल)</th>
+        </tr>
+      </thead>
+      <tbody id="studentTableBody">
+        <!-- JavaScript द्वारे १ ते १० वर्गांचे रो तयार होतील -->
+      </tbody>
+      <tfoot>
+        <tr class="total-row">
+          <td colspan="2">एकूण</td>
+          <td id="totalReg">0</td>
+          <td id="totalPortal">0</td>
+          <td id="totalAadhar">0</td>
+          <td id="totalPresent">0</td>
+          <td id="totalDiff">0</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="section-title">३. आवश्यक कागदपत्रे व रेकॉर्ड तपासणी</div>
+  <div class="table-container">
+    <table class="checklist-table">
+      <thead>
+        <tr>
+          <th style="width: 8%;">अ.क्र.</th>
+          <th>तपासणीचा तपशील / बाबी</th>
+          <th style="width: 32%;">पडताळणी</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>१.</td>
+          <td style="text-align: left;">शाळेचे जनरल रजिस्टर (दाखल-खारीज नोंदवही) अद्ययावत आहे का?</td>
+          <td>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="chk1" value="होय" onchange="toggleChecklist(1, 'होय')"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk1" value="नाही" onchange="toggleChecklist(1, 'नाही')"> [ ] नाही</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>२.</td>
+          <td style="text-align: left;">वर्गवार दैनंदिन हजेरीपट आणि जनरल रजिस्टर मधील पटसंख्या जुळते का?</td>
+          <td>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="chk2" value="होय" onchange="toggleChecklist(2, 'होय')"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk2" value="नाही" onchange="toggleChecklist(2, 'नाही')"> [ ] नाही</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>३.</td>
+          <td style="text-align: left;">सरल (Student Portal) वरील विद्यार्थी संख्या आणि हजेरीपटावरील संख्या एकसमान आहे का?</td>
+          <td>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="chk3" value="होय" onchange="toggleChecklist(3, 'होय')"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk3" value="नाही" onchange="toggleChecklist(3, 'नाही')"> [ ] नाही</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>४.</td>
+          <td style="text-align: left;">शाळेत दुबार (Duplicate) नोंद असलेले विद्यार्थी वगळण्यात आले आहेत का?</td>
+          <td>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="chk4" value="होय" onchange="toggleChecklist(4, 'होय')"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk4" value="नाही" onchange="toggleChecklist(4, 'नाही')"> [ ] नाही</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>५.</td>
+          <td style="text-align: left;">प्रदीर्घ काळ गैरहजर/स्थलांतरित विद्यार्थ्यांच्या नोंदी पोर्टलवर अद्ययावत केल्या आहेत का?</td>
+          <td>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="chk5" value="होय" onchange="toggleChecklist(5, 'होय')"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk5" value="नाही" onchange="toggleChecklist(5, 'नाही')"> [ ] नाही</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>६.</td>
+          <td style="text-align: left;">आधार इनव्हॅलिड (Aadhaar Invalid) विद्यार्थ्यांचे आधार अपडेट करण्याचे काम सुरू आहे का?</td>
+          <td>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="chk6" value="होय" onchange="toggleChecklist(6, 'होय')"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk6" value="नाही" onchange="toggleChecklist(6, 'नाही')"> [ ] नाही</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>७.</td>
+          <td style="text-align: left;">स्थलांतर प्रमाणपत्र (TC) घेऊन गेलेल्या सर्व विद्यार्थ्यांची नावे शाळेने स्वतःच्या यूडायस+ मधून ऑनलाईन देखील कमी केले आहेत का?</td>
+          <td>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="chk7" value="होय" onchange="toggleChecklist(7, 'होय')"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk7" value="नाही" onchange="toggleChecklist(7, 'नाही')"> [ ] नाही</label>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">४. केंद्रप्रमुखांचे निरीक्षण व शेरा</div>
+  <div class="form-group">
+    <label>पोर्टल आणि हजेरीपटात तफावत असल्यास त्याची कारणे (उदा. स्थलांतर, दुबार नोंद इ.):</label>
+    <textarea id="remarks" rows="3" placeholder="येथे शेरा व तफावतीची कारणे नोंदवा..."></textarea>
+  </div>
+
+  <div class="sign-section">
+    <div>मुख्याध्यापकाची स्वाक्षरी व शिक्का</div>
+    <div>केंद्रप्रमुखाची स्वाक्षरी व नाव</div>
+  </div>
+
+  <div class="btn-container">
+    <button type="button" class="btn btn-primary" onclick="saveData()">💾 डेटा सेव्ह करा</button>
+    <button type="button" class="btn btn-success" onclick="window.print()">🖨️ प्रिंट / PDF काढा</button>
+    <button type="button" class="btn btn-secondary" onclick="resetForm()">🔄 पूर्ववत करा (Reset)</button>
+  </div>
+
+</div>
+
+<script>
+  // वर्गांची यादी
+  var classes = [
+    { id: 1, name: "पहिला" },
+    { id: 2, name: "दुसरा" },
+    { id: 3, name: "तिसरा" },
+    { id: 4, name: "चौथा" },
+    { id: 5, name: "पाचवा" },
+    { id: 6, name: "सहावा" },
+    { id: 7, name: "सातवा" },
+    { id: 8, name: "आठवा" },
+    { id: 9, name: "नववा" },
+    { id: 10, name: "दहावा" }
+  ];
+
+  // कागदपत्र तपासणीची स्थिती बदलण्यासाठी फंक्शन
+  function toggleChecklist(itemNo, status) {
+    var remarksField = document.getElementById('remarks');
+    if (status === 'नाही') {
+      console.log('मुद्दा क्र. ' + itemNo + ' ची पूर्तता नाही.');
+    }
+  }
+
+  // वर्गवार तक्ता तयार करणे
+  function renderTable() {
+    var tbody = document.getElementById('studentTableBody');
+    var html = '';
+
+    for (var i = 0; i < classes.length; i++) {
+      var c = classes[i];
+      html += '<tr>' +
+        '<td>' + c.id + '</td>' +
+        '<td>' + c.name + '</td>' +
+        '<td><input type="number" min="0" class="num-input reg-in" id="reg_' + c.id + '" oninput="calculateRow(' + c.id + ')"></td>' +
+        '<td><input type="number" min="0" class="num-input portal-in" id="portal_' + c.id + '" oninput="calculateRow(' + c.id + ')"></td>' +
+        '<td><input type="number" min="0" class="num-input aadhar-in" id="aadhar_' + c.id + '" oninput="calculateTotals()"></td>' +
+        '<td><input type="number" min="0" class="num-input pres-in" id="pres_' + c.id + '" oninput="calculateTotals()"></td>' +
+        '<td class="diff-cell" id="diff_' + c.id + '">0</td>' +
+      '</tr>';
+    }
+    tbody.innerHTML = html;
+  }
+
+  // प्रत्येक ओळीची तफावत काढणे
+  function calculateRow(id) {
+    var regVal = parseInt(document.getElementById('reg_' + id).value) || 0;
+    var portalVal = parseInt(document.getElementById('portal_' + id).value) || 0;
+    var diff = regVal - portalVal;
+
+    var diffCell = document.getElementById('diff_' + id);
+    diffCell.innerText = diff;
+
+    // रंग बदलणे
+    diffCell.className = "diff-cell";
+    if (diff < 0) {
+      diffCell.classList.add("diff-negative");
+    } else if (diff > 0) {
+      diffCell.classList.add("diff-positive");
+    }
+
+    calculateTotals();
+  }
+
+  // एकूण बेरीज काढणे
+  function calculateTotals() {
+    var totalReg = 0;
+    var totalPortal = 0;
+    var totalAadhar = 0;
+    var totalPres = 0;
+
+    for (var i = 0; i < classes.length; i++) {
+      var id = classes[i].id;
+      totalReg += parseInt(document.getElementById('reg_' + id).value) || 0;
+      totalPortal += parseInt(document.getElementById('portal_' + id).value) || 0;
+      totalAadhar += parseInt(document.getElementById('aadhar_' + id).value) || 0;
+      totalPres += parseInt(document.getElementById('pres_' + id).value) || 0;
+    }
+
+    var totalDiff = totalReg - totalPortal;
+
+    document.getElementById('totalReg').innerText = totalReg;
+    document.getElementById('totalPortal').innerText = totalPortal;
+    document.getElementById('totalAadhar').innerText = totalAadhar;
+    document.getElementById('totalPresent').innerText = totalPres;
+    
+    var totalDiffCell = document.getElementById('totalDiff');
+    totalDiffCell.innerText = totalDiff;
+    totalDiffCell.className = "diff-cell";
+    if (totalDiff < 0) {
+      totalDiffCell.classList.add("diff-negative");
+    } else if (totalDiff > 0) {
+      totalDiffCell.classList.add("diff-positive");
+    }
+  }
+
+  // डेटा LocalStorage मध्ये सेव्ह करणे
+  function saveData() {
+    var formData = {
+      schoolName: document.getElementById('schoolName').value,
+      udiseCode: document.getElementById('udiseCode').value,
+      visitDate: document.getElementById('visitDate').value,
+      hmName: document.getElementById('hmName').value,
+      remarks: document.getElementById('remarks').value,
+      classData: []
+    };
+
+    for (var i = 0; i < classes.length; i++) {
+      var id = classes[i].id;
+      formData.classData.push({
+        id: id,
+        reg: document.getElementById('reg_' + id).value,
+        portal: document.getElementById('portal_' + id).value,
+        aadhar: document.getElementById('aadhar_' + id).value,
+        pres: document.getElementById('pres_' + id).value
+      });
+    }
+
+    localStorage.setItem('shalaBhetData', JSON.stringify(formData));
+    alert('माहिती सुरक्षित सेव्ह झाली आहे!');
+  }
+
+  // सेव्ह केलेला डेटा परत भरणे
+  function loadSavedData() {
+    var saved = localStorage.getItem('shalaBhetData');
+    if (!saved) return;
+
+    try {
+      var data = JSON.parse(saved);
+      if (data.schoolName) document.getElementById('schoolName').value = data.schoolName;
+      if (data.udiseCode) document.getElementById('udiseCode').value = data.udiseCode;
+      if (data.visitDate) document.getElementById('visitDate').value = data.visitDate;
+      if (data.hmName) document.getElementById('hmName').value = data.hmName;
+      if (data.remarks) document.getElementById('remarks').value = data.remarks;
+
+      if (data.classData) {
+        for (var i = 0; i < data.classData.length; i++) {
+          var item = data.classData[i];
+          if (document.getElementById('reg_' + item.id)) {
+            document.getElementById('reg_' + item.id).value = item.reg || '';
+            document.getElementById('portal_' + item.id).value = item.portal || '';
+            document.getElementById('aadhar_' + item.id).value = item.aadhar || '';
+            document.getElementById('pres_' + item.id).value = item.pres || '';
+            calculateRow(item.id);
+          }
+        }
+      }
+    } catch (e) {
+      console.error("डेटा लोड करताना त्रुटी आली", e);
+    }
+  }
+
+  // फॉर्म पूर्ववत करणे
+  function resetForm() {
+    if (confirm('तुम्हाला भरलेली माहिती रीसेट करायची आहे का?')) {
+      localStorage.removeItem('shalaBhetData');
+      location.reload();
+    }
+  }
+
+  // पेज लोड झाल्यावर सुरू करा
+  window.onload = function() {
+    renderTable();
+    loadSavedData();
+    // आजची तारीख सेट करणे (जर रिकामी असेल तर)
+    var dateField = document.getElementById('visitDate');
+    if (!dateField.value) {
+      var today = new Date().toISOString().split('T')[0];
+      dateField.value = today;
+    }
+  };
+</script>
+
+</body>
+</html>

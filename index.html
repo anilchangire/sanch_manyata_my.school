@@ -4,210 +4,302 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>केंद्रप्रमुख शाळा भेट व संचमान्यता पट पडताळणी प्रपत्र</title>
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #1e40af;
+      --primary-light: #3b82f6;
+      --primary-subtle: #eff6ff;
+      --secondary: #0f766e;
+      --accent: #f59e0b;
+      --bg-color: #f1f5f9;
+      --card-bg: #ffffff;
+      --border-color: #cbd5e1;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --danger: #dc2626;
+      --success: #16a34a;
+    }
+
     * {
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Mukta', 'Segoe UI', sans-serif;
     }
+
     body {
-      background-color: #f0f2f5;
+      background: var(--bg-color);
       margin: 0;
-      padding: 10px;
-      color: #111;
+      padding: 12px;
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
     }
+
     .form-container {
-      max-width: 850px;
-      margin: 0 auto;
-      background: #ffffff;
-      padding: 20px 25px;
-      border: 1px solid #ccc;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-      border-radius: 8px;
+      max-width: 900px;
+      margin: 10px auto;
+      background: var(--card-bg);
+      padding: 24px 28px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e2e8f0;
     }
+
+    /* Attractive Header */
     .header-section {
       text-align: center;
-      border-bottom: 2px solid #222;
-      padding-bottom: 10px;
-      margin-bottom: 15px;
+      padding-bottom: 16px;
+      border-bottom: 2px dashed #94a3b8;
+      margin-bottom: 20px;
     }
-    .header-section h2 {
-      margin: 0 0 5px 0;
-      font-size: 20px;
+
+    .header-badge {
+      display: inline-block;
+      background: #e0e7ff;
+      color: #3730a3;
+      font-size: 13px;
       font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      margin-bottom: 8px;
     }
+
+    .header-section h2 {
+      margin: 4px 0;
+      font-size: 23px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
     .header-section h3 {
       margin: 0;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
-      color: #444;
+      color: var(--text-muted);
     }
+
+    /* Section Styling */
     .section-title {
       font-size: 15px;
-      font-weight: bold;
-      margin-top: 15px;
-      margin-bottom: 8px;
-      background: #eef2f7;
-      padding: 6px 10px;
-      border-left: 4px solid #1a73e8;
+      font-weight: 700;
+      margin-top: 22px;
+      margin-bottom: 12px;
+      background: linear-gradient(90deg, var(--primary-subtle) 0%, rgba(239, 246, 255, 0.2) 100%);
+      color: var(--primary);
+      padding: 7px 12px;
+      border-left: 4px solid var(--primary);
+      border-radius: 0 6px 6px 0;
     }
-    .grid-info {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
+
     .form-group {
       display: flex;
       flex-direction: column;
+      margin-bottom: 12px;
     }
+
     .form-group label {
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 600;
-      margin-bottom: 3px;
+      color: #334155;
+      margin-bottom: 4px;
     }
-    .form-group input, .form-group textarea {
-      padding: 7px 10px;
+
+    .form-group input, 
+    .form-group textarea, 
+    .form-group select {
+      padding: 8px 12px;
       font-size: 14px;
-      border: 1px solid #aaa;
-      border-radius: 4px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 6px;
       outline: none;
+      background-color: #fff;
+      transition: all 0.2s ease;
+      width: 100%;
     }
-    .form-group input:focus, .form-group textarea:focus {
-      border-color: #1a73e8;
-      box-shadow: 0 0 4px rgba(26,115,232,0.3);
+
+    .form-group select {
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
     }
+
+    .form-group input:focus, 
+    .form-group textarea:focus, 
+    .form-group select:focus {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 8px;
+    }
+
+    /* Table Styling */
     .table-container {
       overflow-x: auto;
-      margin-bottom: 15px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 13px;
+      font-size: 13.5px;
       background: #fff;
     }
+
     table, th, td {
-      border: 1px solid #222;
+      border: 1px solid #cbd5e1;
     }
+
     th, td {
-      padding: 6px 4px;
+      padding: 7px 5px;
       text-align: center;
     }
+
     th {
-      background-color: #f7f9fa;
-      font-weight: 600;
+      background-color: #f8fafc;
+      font-weight: 700;
+      color: #1e293b;
     }
+
     .num-input {
       width: 100%;
-      min-width: 55px;
-      padding: 5px;
-      font-size: 13px;
+      min-width: 58px;
+      padding: 6px 4px;
+      font-size: 14px;
       text-align: center;
-      border: 1px solid #bbb;
-      border-radius: 3px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      outline: none;
     }
+
     .num-input:focus {
-      background-color: #fff9db;
-      border-color: #f59f00;
+      background-color: #fffbeb;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
     }
+
     .diff-cell {
-      font-weight: bold;
-      background-color: #fafafa;
+      font-weight: 700;
+      font-size: 14px;
+      background-color: #f8fafc;
     }
+
     .diff-negative {
-      color: #d90429;
-      background-color: #ffe3e3;
+      color: var(--danger);
+      background-color: #fef2f2;
     }
+
     .diff-positive {
-      color: #2b8a3e;
-      background-color: #ebfbee;
+      color: var(--success);
+      background-color: #f0fdf4;
     }
+
     .total-row {
-      font-weight: bold;
-      background-color: #eaecef;
+      font-weight: 700;
+      background-color: #e2e8f0;
+      font-size: 14.5px;
     }
+
+    /* Checklist Table */
     .checklist-table td {
-      padding: 8px;
+      padding: 10px 8px;
     }
+
     .radio-group {
       display: flex;
       justify-content: center;
-      gap: 15px;
+      gap: 16px;
     }
+
     .radio-label {
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      font-weight: 500;
+      gap: 5px;
+      font-weight: 600;
+      font-size: 13.5px;
     }
+
+    .radio-label input[type="radio"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--primary);
+    }
+
+    /* Signature Section */
     .sign-section {
       display: flex;
       justify-content: space-between;
-      margin-top: 40px;
-      padding: 0 20px;
-      font-weight: bold;
+      margin-top: 45px;
+      padding: 0 25px;
+      font-weight: 700;
       font-size: 14px;
+      color: #1e293b;
     }
+
+    /* Action Buttons */
     .btn-container {
-      margin-top: 25px;
+      margin-top: 30px;
       display: flex;
       justify-content: center;
-      gap: 15px;
+      gap: 12px;
       flex-wrap: wrap;
     }
+
     .btn {
       padding: 10px 22px;
-      font-size: 15px;
-      font-weight: 600;
+      font-size: 14px;
+      font-weight: 700;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      transition: all 0.2s ease;
     }
-    .btn-primary {
-      background-color: #1a73e8;
-      color: white;
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.12);
     }
-    .btn-success {
-      background-color: #2e7d32;
-      color: white;
+
+    .btn-primary { background-color: var(--primary); color: white; }
+    .btn-success { background-color: var(--secondary); color: white; }
+    .btn-secondary { background-color: #64748b; color: white; }
+
+    @media (max-width: 650px) {
+      .form-container { padding: 15px 12px; }
+      .form-row { flex-direction: column; gap: 0; }
+      .sign-section { flex-direction: column; gap: 35px; text-align: center; }
+      .btn { width: 100%; justify-content: center; }
     }
-    .btn-secondary {
-      background-color: #e0e0e0;
-      color: #222;
-    }
-    @media (max-width: 600px) {
-      .grid-info {
-        grid-template-columns: 1fr;
-      }
-      .sign-section {
-        flex-direction: column;
-        gap: 35px;
-        text-align: center;
-      }
-    }
+
     @media print {
-      body {
-        background: transparent;
-        padding: 0;
-      }
+      body { background: transparent; padding: 0; }
       .form-container {
         border: none;
         box-shadow: none;
         padding: 0;
         max-width: 100%;
       }
-      .btn-container {
-        display: none !important;
-      }
-      .num-input {
-        border: none;
-        background: transparent;
-      }
-      input, textarea {
+      .btn-container, .header-badge { display: none !important; }
+      .num-input, input, textarea, select {
         border: none !important;
         background: transparent !important;
+        appearance: none;
+        -webkit-appearance: none;
+        font-weight: 600;
+      }
+      .section-title {
+        background: #f1f5f9 !important;
+        border-left: 3px solid #000 !important;
+        color: #000 !important;
       }
     }
   </style>
@@ -217,66 +309,70 @@
 <div class="form-container" id="reportForm">
   
   <div class="header-section">
+    <span class="header-badge">शाळा तपासणी व संचमान्यता पोर्टल</span>
     <h2>केंद्रप्रमुख शाळा भेट व संचमान्यता पट पडताळणी प्रपत्र</h2>
-    <h3>शैक्षणिक वर्ष: २०२६-२७</h3>
+    <h3>शैक्षणिक वर्ष: २०२६-२७ | समूह साधन केंद्र कन्या नागापूर</h3>
   </div>
 
-  <label for="schoolName">शाळेचे नाव निवडा:</label>
-                                <select id="schoolName" name="schoolName" required>
-                                    <option value="" data-udise="" data-hm="">-- शाळा निवडा --</option>
-                                    <option value="जि.प.कें.प्रा.शाळा कन्या नागापूर" data-udise="27270804001" data-hm="श्री.बी.डी.राठोड">जि.प.कें.प्रा.शाळा कन्या नागापूर</option>
-                                    <option value="जि.प.मा.शाळा नागापूर" data-udise="27270804002" data-hm="श्री.ए बी गायकवाड">जि.प.मा.शाळा नागापूर</option>
-                                    <option value="जि.प.प्रा.शाळा डाबी" data-udise="27270804101" data-hm="श्री.एम.आर.फड ">जि.प.प्रा.शाळा डाबी</option>
-                                    <option value="जि.प.प्रा.शाळा डाबी तांडा" data-udise="27270804701" data-hm="श्री.एस.जी.फड">जि.प.प्रा.शाळा डाबी तांडा</option>
-                                    <option value="जि.प.प्रा.शाळा वानटाकळी" data-udise="27270804301" data-hm="श्री.आर.बी.जोशी">जि.प.प्रा.शाळा वानटाकळी</option>
-                                    <option value="जि.प.प्रा.शाळा वानटाकळी तांडा" data-udise="27270804302" data-hm="श्री.एम.एन.जाधव">जि.प.प्रा.शाळा वानटाकळी तांडा</option>
-                                    <option value="जि.प.प्रा.शाळा एकबाली तांडा" data-udise="27280100401" data-hm="श्री.के.बी.माडजे">जि.प.प्रा.शाळा एकबाली तांडा</option>
-                                    <option value="जि.प.प्रा.शाळा दौनापुर तांडा" data-udise="27270804601" data-hm="श्रीमती एस.के.लाड">जि.प.प्रा.शाळा दौनापुर तांडा</option>
-                                    <option value="जि.प.प्रा.शाळा दौनापूर" data-udise="27270804201" data-hm="श्री.आर.टी.मंत्रे">जि.प.प्रा.शाळा दौनापूर</option>
-                                    <option value="जि.प.प्रा.शाळा लिंबूटा तांडा" data-udise="27270804801" data-hm="श्री.एम.बी.बडगिरे">जि.प.प्रा.शाळा लिंबूटा तांडा</option>
-                                    <option value="जि.प.प्रा.शाळा बहादुरवाडी" data-udise="27270804401" data-hm="श्रीमती चिद्दरवार ए.डी">जि.प.प्रा.शाळा बहादुरवाडी</option>
-                                    <option value="संत तुकाराम प्राथमिक विद्यालय नागापूर" data-udise="27270804004" data-hm="श्री.एन.पी.मुंडे">संत तुकाराम प्राथमिक विद्यालय नागापूर</option>
-                                    <option value="रमाबाई प्राथमिक शाळा नागापूर" data-udise="27270804003" data-hm="श्रीमती एस.एस.बनसोडे">रमाबाई प्राथमिक शाळा नागापूर</option>
-                                    <option value="बालाघाट विद्यालय दौनापूर" data-udise="27270804202" data-hm="श्री.एम.व्ही.कराड">बालाघाट विद्यालय दौनापूर</option>
-                                </select>
-                            </div>
+  <div class="section-title">१. शाळेची प्राथमिक माहिती</div>
+  
+  <!-- तुमच्या कोडचा पहिला भाग (शाळा निवड व यु-डायस कोड) -->
+  <div class="form-row">
+    <div class="form-group" style="flex: 2;">
+      <label for="schoolName">शाळेचे नाव निवडा:</label>
+      <select id="schoolName" name="schoolName" onchange="handleSchoolChange()" required>
+        <option value="" data-udise="" data-hm="">-- शाळा निवडा --</option>
+        <option value="जि.प.कें.प्रा.शाळा कन्या नागापूर" data-udise="27270804001" data-hm="श्री.बी.डी.राठोड">जि.प.कें.प्रा.शाळा कन्या नागापूर</option>
+        <option value="जि.प.मा.शाळा नागापूर" data-udise="27270804002" data-hm="श्री.ए बी गायकवाड">जि.प.मा.शाळा नागापूर</option>
+        <option value="जि.प.प्रा.शाळा डाबी" data-udise="27270804101" data-hm="श्री.एम.आर.फड ">जि.प.प्रा.शाळा डाबी</option>
+        <option value="जि.प.प्रा.शाळा डाबी तांडा" data-udise="27270804701" data-hm="श्री.एस.जी.फड">जि.प.प्रा.शाळा डाबी तांडा</option>
+        <option value="जि.प.प्रा.शाळा वानटाकळी" data-udise="27270804301" data-hm="श्री.आर.बी.जोशी">जि.प.प्रा.शाळा वानटाकळी</option>
+        <option value="जि.प.प्रा.शाळा वानटाकळी तांडा" data-udise="27270804302" data-hm="श्री.एम.एन.जाधव">जि.प.प्रा.शाळा वानटाकळी तांडा</option>
+        <option value="जि.प.प्रा.शाळा एकबाली तांडा" data-udise="27280100401" data-hm="श्री.के.बी.माडजे">जि.प.प्रा.शाळा एकबाली तांडा</option>
+        <option value="जि.प.प्रा.शाळा दौनापुर तांडा" data-udise="27270804601" data-hm="श्रीमती एस.के.लाड">जि.प.प्रा.शाळा दौनापुर तांडा</option>
+        <option value="जि.प.प्रा.शाळा दौनापूर" data-udise="27270804201" data-hm="श्री.आर.टी.मंत्रे">जि.प.प्रा.शाळा दौनापूर</option>
+        <option value="जि.प.प्रा.शाळा लिंबूटा तांडा" data-udise="27270804801" data-hm="श्री.एम.बी.बडगिरे">जि.प.प्रा.शाळा लिंबूटा तांडा</option>
+        <option value="जि.प.प्रा.शाळा बहादुरवाडी" data-udise="27270804401" data-hm="श्रीमती चिद्दरवार ए.डी">जि.प.प्रा.शाळा बहादुरवाडी</option>
+        <option value="संत तुकाराम प्राथमिक विद्यालय नागापूर" data-udise="27270804004" data-hm="श्री.एन.पी.मुंडे">संत तुकाराम प्राथमिक विद्यालय नागापूर</option>
+        <option value="रमाबाई प्राथमिक शाळा नागापूर" data-udise="27270804003" data-hm="श्रीमती एस.एस.बनसोडे">रमाबाई प्राथमिक शाळा नागापूर</option>
+        <option value="बालाघाट विद्यालय दौनापूर" data-udise="27270804202" data-hm="श्री.एम.व्ही.कराड">बालाघाट विद्यालय दौनापूर</option>
+      </select>
+    </div>
 
-                            <div class="form-group" style="flex: 1; margin-bottom: 0;">
-                                <label for="udiseCode">शाळेचा यु-डायस क्रमांक:</label>
-                                <input type="text" id="udiseCode" name="udiseCode" placeholder="आपोआप येईल" readonly style="background-color: #f9f9f9;">
-                            </div>
-                        </div>
+    <div class="form-group" style="flex: 1;">
+      <label for="udiseCode">शाळेचा यु-डायस क्रमांक:</label>
+      <input type="text" id="udiseCode" name="udiseCode" placeholder="आपोआप येईल" readonly style="background-color: #f8fafc; font-weight: bold;">
+    </div>
+  </div>
 
-                        <div style="display: flex; gap: 15px; margin-bottom: 12px; align-items: flex-end;">
-                            <div class="form-group" style="flex: 2; margin-bottom: 0;">
-                                <label for="headmasterName">मुख्याध्यापकांचे नाव:</label>
-                                <input type="text" id="headmasterName" name="headmasterName" placeholder="आपोआप येईल" readonly style="background-color: #f9f9f9;">
-                            </div>
+  <!-- तुमच्या कोडचा दुसरा भाग (मुख्याध्यापक नाव व भेट दिनांक) -->
+  <div class="form-row">
+    <div class="form-group" style="flex: 2;">
+      <label for="headmasterName">मुख्याध्यापकांचे नाव:</label>
+      <input type="text" id="headmasterName" name="headmasterName" placeholder="आपोआप येईल" readonly style="background-color: #f8fafc; font-weight: bold;">
+    </div>
 
-                            <div class="form-group" style="flex: 1; margin-bottom: 0;">
-                                <label for="visitDate">भेटीचा दिनांक:</label>
-                                <input type="date" id="visitDate" name="visitDate" class="no-pdf-date" required>
-                                <input type="text" id="visitDateFormatted" class="pdf-date-display" readonly style="background-color: #ffffff;">
-                            </div>
-                        </div>
+    <div class="form-group" style="flex: 1;">
+      <label for="visitDate">भेटीचा दिनांक:</label>
+      <input type="date" id="visitDate" name="visitDate" required>
+    </div>
+  </div>
 
   <div class="section-title">२. वर्गवार विद्यार्थी पट व उपस्थिती पडताळणी</div>
   <div class="table-container">
     <table>
       <thead>
         <tr>
-          <th style="width: 7%;">अ.क्र.</th>
-          <th style="width: 13%;">वर्ग</th>
+          <th style="width: 6%;">अ.क्र.</th>
+          <th style="width: 12%;">वर्ग</th>
           <th>हजेरीपटावरील एकूण विद्यार्थी (Register)</th>
           <th>सरल पोर्टलवरील एकूण विद्यार्थी</th>
           <th>आधार प्रमाणित (Valid) विद्यार्थी</th>
           <th>प्रत्यक्ष उपस्थित विद्यार्थी (भेटीच्या दिवशी)</th>
-          <th>तफावत (रजिस्टर - पोर्टल)</th>
+          <th style="width: 15%;">तफावत (रजिस्टर - पोर्टल)</th>
         </tr>
       </thead>
-      <tbody id="studentTableBody">
-        <!-- JavaScript द्वारे १ ते १० वर्गांचे रो तयार होतील -->
-      </tbody>
+      <tbody id="studentTableBody"></tbody>
       <tfoot>
         <tr class="total-row">
           <td colspan="2">एकूण</td>
@@ -297,7 +393,7 @@
         <tr>
           <th style="width: 8%;">अ.क्र.</th>
           <th>तपासणीचा तपशील / बाबी</th>
-          <th style="width: 32%;">पडताळणी</th>
+          <th style="width: 28%;">पडताळणी</th>
         </tr>
       </thead>
       <tbody>
@@ -306,8 +402,8 @@
           <td style="text-align: left;">शाळेचे जनरल रजिस्टर (दाखल-खारीज नोंदवही) अद्ययावत आहे का?</td>
           <td>
             <div class="radio-group">
-              <label class="radio-label"><input type="radio" name="chk1" value="होय" onchange="toggleChecklist(1, 'होय')"> [ ] होय</label>
-              <label class="radio-label"><input type="radio" name="chk1" value="नाही" onchange="toggleChecklist(1, 'नाही')"> [ ] नाही</label>
+              <label class="radio-label"><input type="radio" name="chk1" value="होय"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk1" value="नाही"> [ ] नाही</label>
             </div>
           </td>
         </tr>
@@ -316,8 +412,8 @@
           <td style="text-align: left;">वर्गवार दैनंदिन हजेरीपट आणि जनरल रजिस्टर मधील पटसंख्या जुळते का?</td>
           <td>
             <div class="radio-group">
-              <label class="radio-label"><input type="radio" name="chk2" value="होय" onchange="toggleChecklist(2, 'होय')"> [ ] होय</label>
-              <label class="radio-label"><input type="radio" name="chk2" value="नाही" onchange="toggleChecklist(2, 'नाही')"> [ ] नाही</label>
+              <label class="radio-label"><input type="radio" name="chk2" value="होय"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk2" value="नाही"> [ ] नाही</label>
             </div>
           </td>
         </tr>
@@ -326,8 +422,8 @@
           <td style="text-align: left;">सरल (Student Portal) वरील विद्यार्थी संख्या आणि हजेरीपटावरील संख्या एकसमान आहे का?</td>
           <td>
             <div class="radio-group">
-              <label class="radio-label"><input type="radio" name="chk3" value="होय" onchange="toggleChecklist(3, 'होय')"> [ ] होय</label>
-              <label class="radio-label"><input type="radio" name="chk3" value="नाही" onchange="toggleChecklist(3, 'नाही')"> [ ] नाही</label>
+              <label class="radio-label"><input type="radio" name="chk3" value="होय"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk3" value="नाही"> [ ] नाही</label>
             </div>
           </td>
         </tr>
@@ -336,8 +432,8 @@
           <td style="text-align: left;">शाळेत दुबार (Duplicate) नोंद असलेले विद्यार्थी वगळण्यात आले आहेत का?</td>
           <td>
             <div class="radio-group">
-              <label class="radio-label"><input type="radio" name="chk4" value="होय" onchange="toggleChecklist(4, 'होय')"> [ ] होय</label>
-              <label class="radio-label"><input type="radio" name="chk4" value="नाही" onchange="toggleChecklist(4, 'नाही')"> [ ] नाही</label>
+              <label class="radio-label"><input type="radio" name="chk4" value="होय"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk4" value="नाही"> [ ] नाही</label>
             </div>
           </td>
         </tr>
@@ -346,8 +442,8 @@
           <td style="text-align: left;">प्रदीर्घ काळ गैरहजर/स्थलांतरित विद्यार्थ्यांच्या नोंदी पोर्टलवर अद्ययावत केल्या आहेत का?</td>
           <td>
             <div class="radio-group">
-              <label class="radio-label"><input type="radio" name="chk5" value="होय" onchange="toggleChecklist(5, 'होय')"> [ ] होय</label>
-              <label class="radio-label"><input type="radio" name="chk5" value="नाही" onchange="toggleChecklist(5, 'नाही')"> [ ] नाही</label>
+              <label class="radio-label"><input type="radio" name="chk5" value="होय"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk5" value="नाही"> [ ] नाही</label>
             </div>
           </td>
         </tr>
@@ -356,8 +452,8 @@
           <td style="text-align: left;">आधार इनव्हॅलिड (Aadhaar Invalid) विद्यार्थ्यांचे आधार अपडेट करण्याचे काम सुरू आहे का?</td>
           <td>
             <div class="radio-group">
-              <label class="radio-label"><input type="radio" name="chk6" value="होय" onchange="toggleChecklist(6, 'होय')"> [ ] होय</label>
-              <label class="radio-label"><input type="radio" name="chk6" value="नाही" onchange="toggleChecklist(6, 'नाही')"> [ ] नाही</label>
+              <label class="radio-label"><input type="radio" name="chk6" value="होय"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk6" value="नाही"> [ ] नाही</label>
             </div>
           </td>
         </tr>
@@ -366,8 +462,8 @@
           <td style="text-align: left;">स्थलांतर प्रमाणपत्र (TC) घेऊन गेलेल्या सर्व विद्यार्थ्यांची नावे शाळेने स्वतःच्या यूडायस+ मधून ऑनलाईन देखील कमी केले आहेत का?</td>
           <td>
             <div class="radio-group">
-              <label class="radio-label"><input type="radio" name="chk7" value="होय" onchange="toggleChecklist(7, 'होय')"> [ ] होय</label>
-              <label class="radio-label"><input type="radio" name="chk7" value="नाही" onchange="toggleChecklist(7, 'नाही')"> [ ] नाही</label>
+              <label class="radio-label"><input type="radio" name="chk7" value="होय"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk7" value="नाही"> [ ] नाही</label>
             </div>
           </td>
         </tr>
@@ -378,7 +474,7 @@
   <div class="section-title">४. केंद्रप्रमुखांचे निरीक्षण व शेरा</div>
   <div class="form-group">
     <label>पोर्टल आणि हजेरीपटात तफावत असल्यास त्याची कारणे (उदा. स्थलांतर, दुबार नोंद इ.):</label>
-    <textarea id="remarks" rows="3" placeholder="येथे शेरा व तफावतीची कारणे नोंदवा..."></textarea>
+    <textarea id="remarks" rows="3" placeholder="तफावतीची कारणे व तपासणी शेरा येथे नोंदवा..."></textarea>
   </div>
 
   <div class="sign-section">
@@ -389,13 +485,12 @@
   <div class="btn-container">
     <button type="button" class="btn btn-primary" onclick="saveData()">💾 डेटा सेव्ह करा</button>
     <button type="button" class="btn btn-success" onclick="window.print()">🖨️ प्रिंट / PDF काढा</button>
-    <button type="button" class="btn btn-secondary" onclick="resetForm()">🔄 पूर्ववत करा (Reset)</button>
+    <button type="button" class="btn btn-secondary" onclick="resetCurrentForm()">🔄 फॉर्म पूर्ववत करा</button>
   </div>
 
 </div>
 
 <script>
-  // वर्गांची यादी
   var classes = [
     { id: 1, name: "पहिला" },
     { id: 2, name: "दुसरा" },
@@ -409,11 +504,21 @@
     { id: 10, name: "दहावा" }
   ];
 
-  // कागदपत्र तपासणीची स्थिती बदलण्यासाठी फंक्शन
-  function toggleChecklist(itemNo, status) {
-    var remarksField = document.getElementById('remarks');
-    if (status === 'नाही') {
-      console.log('मुद्दा क्र. ' + itemNo + ' ची पूर्तता नाही.');
+  // शाळा निवडल्यावर आपोआप यु-डायस व मुख्याध्यापकांचे नाव भरणारे फंक्शन
+  function handleSchoolChange() {
+    var select = document.getElementById('schoolName');
+    var selectedOption = select.options[select.selectedIndex];
+    
+    var udise = selectedOption.getAttribute('data-udise') || '';
+    var hm = selectedOption.getAttribute('data-hm') || '';
+
+    document.getElementById('udiseCode').value = udise;
+    document.getElementById('headmasterName').value = hm;
+
+    if (udise) {
+      loadSavedSchoolData(udise);
+    } else {
+      clearTableInputs();
     }
   }
 
@@ -426,7 +531,7 @@
       var c = classes[i];
       html += '<tr>' +
         '<td>' + c.id + '</td>' +
-        '<td>' + c.name + '</td>' +
+        '<td><b>' + c.name + '</b></td>' +
         '<td><input type="number" min="0" class="num-input reg-in" id="reg_' + c.id + '" oninput="calculateRow(' + c.id + ')"></td>' +
         '<td><input type="number" min="0" class="num-input portal-in" id="portal_' + c.id + '" oninput="calculateRow(' + c.id + ')"></td>' +
         '<td><input type="number" min="0" class="num-input aadhar-in" id="aadhar_' + c.id + '" oninput="calculateTotals()"></td>' +
@@ -437,7 +542,7 @@
     tbody.innerHTML = html;
   }
 
-  // प्रत्येक ओळीची तफावत काढणे
+  // तफावत काढणे
   function calculateRow(id) {
     var regVal = parseInt(document.getElementById('reg_' + id).value) || 0;
     var portalVal = parseInt(document.getElementById('portal_' + id).value) || 0;
@@ -446,7 +551,6 @@
     var diffCell = document.getElementById('diff_' + id);
     diffCell.innerText = diff;
 
-    // रंग बदलणे
     diffCell.className = "diff-cell";
     if (diff < 0) {
       diffCell.classList.add("diff-negative");
@@ -459,10 +563,7 @@
 
   // एकूण बेरीज काढणे
   function calculateTotals() {
-    var totalReg = 0;
-    var totalPortal = 0;
-    var totalAadhar = 0;
-    var totalPres = 0;
+    var totalReg = 0, totalPortal = 0, totalAadhar = 0, totalPres = 0;
 
     for (var i = 0; i < classes.length; i++) {
       var id = classes[i].id;
@@ -489,17 +590,33 @@
     }
   }
 
-  // डेटा LocalStorage मध्ये सेव्ह करणे
+  // शाळेचा डेटा LocalStorage मध्ये सेव्ह करणे
   function saveData() {
+    var udise = document.getElementById('udiseCode').value.trim();
+    if (!udise) {
+      alert('कृपया आधी शाळा निवडा!');
+      return;
+    }
+
     var formData = {
       schoolName: document.getElementById('schoolName').value,
-      udiseCode: document.getElementById('udiseCode').value,
+      udiseCode: udise,
+      headmasterName: document.getElementById('headmasterName').value,
       visitDate: document.getElementById('visitDate').value,
-      hmName: document.getElementById('hmName').value,
       remarks: document.getElementById('remarks').value,
+      checklist: {},
       classData: []
     };
 
+    // चेकलिस्ट सेव्ह करणे
+    for (var k = 1; k <= 7; k++) {
+      var selectedRadio = document.querySelector('input[name="chk' + k + '"]:checked');
+      if (selectedRadio) {
+        formData.checklist['chk' + k] = selectedRadio.value;
+      }
+    }
+
+    // पटसंख्या सेव्ह करणे
     for (var i = 0; i < classes.length; i++) {
       var id = classes[i].id;
       formData.classData.push({
@@ -511,22 +628,34 @@
       });
     }
 
-    localStorage.setItem('shalaBhetData', JSON.stringify(formData));
-    alert('माहिती सुरक्षित सेव्ह झाली आहे!');
+    localStorage.setItem('shalaBhet_' + udise, JSON.stringify(formData));
+    localStorage.setItem('lastActiveUdise', udise);
+    alert('या शाळेची माहिती सेव्ह झाली आहे!');
   }
 
-  // सेव्ह केलेला डेटा परत भरणे
-  function loadSavedData() {
-    var saved = localStorage.getItem('shalaBhetData');
-    if (!saved) return;
+  // सेव्ह केलेला डेटा लोड करणे
+  function loadSavedSchoolData(udise) {
+    if (!udise) return;
+    var saved = localStorage.getItem('shalaBhet_' + udise);
+    if (!saved) {
+      clearTableInputs();
+      return;
+    }
 
     try {
       var data = JSON.parse(saved);
-      if (data.schoolName) document.getElementById('schoolName').value = data.schoolName;
-      if (data.udiseCode) document.getElementById('udiseCode').value = data.udiseCode;
       if (data.visitDate) document.getElementById('visitDate').value = data.visitDate;
-      if (data.hmName) document.getElementById('hmName').value = data.hmName;
       if (data.remarks) document.getElementById('remarks').value = data.remarks;
+
+      if (data.checklist) {
+        for (var k = 1; k <= 7; k++) {
+          var val = data.checklist['chk' + k];
+          if (val) {
+            var r = document.querySelector('input[name="chk' + k + '"][value="' + val + '"]');
+            if (r) r.checked = true;
+          }
+        }
+      }
 
       if (data.classData) {
         for (var i = 0; i < data.classData.length; i++) {
@@ -541,28 +670,62 @@
         }
       }
     } catch (e) {
-      console.error("डेटा लोड करताना त्रुटी आली", e);
+      console.error(e);
     }
   }
 
-  // फॉर्म पूर्ववत करणे
-  function resetForm() {
-    if (confirm('तुम्हाला भरलेली माहिती रीसेट करायची आहे का?')) {
-      localStorage.removeItem('shalaBhetData');
-      location.reload();
+  function clearTableInputs() {
+    for (var i = 0; i < classes.length; i++) {
+      var id = classes[i].id;
+      if (document.getElementById('reg_' + id)) {
+        document.getElementById('reg_' + id).value = '';
+        document.getElementById('portal_' + id).value = '';
+        document.getElementById('aadhar_' + id).value = '';
+        document.getElementById('pres_' + id).value = '';
+        calculateRow(id);
+      }
+    }
+    document.getElementById('remarks').value = '';
+    var radios = document.querySelectorAll('input[type="radio"]');
+    radios.forEach(function(r) { r.checked = false; });
+  }
+
+  function resetCurrentForm() {
+    if (confirm('तुम्हाला या शाळेचा भरलेला डेटा स्वच्छ (Clear) करायचा आहे का?')) {
+      var udise = document.getElementById('udiseCode').value.trim();
+      if (udise) {
+        localStorage.removeItem('shalaBhet_' + udise);
+      }
+      clearTableInputs();
     }
   }
 
   // पेज लोड झाल्यावर सुरू करा
   window.onload = function() {
     renderTable();
-    loadSavedData();
-    // आजची तारीख सेट करणे (जर रिकामी असेल तर)
+
+    // आजची तारीख सेट करणे
     var dateField = document.getElementById('visitDate');
     if (!dateField.value) {
-      var today = new Date().toISOString().split('T')[0];
-      dateField.value = today;
+      dateField.value = new Date().toISOString().split('T')[0];
     }
+
+    // शेवटची शाळा लोड करणे (किंवा डिफॉल्ट पहिली शाळा)
+    var lastUdise = localStorage.getItem('lastActiveUdise');
+    var select = document.getElementById('schoolName');
+    
+    if (lastUdise) {
+      for (var i = 0; i < select.options.length; i++) {
+        if (select.options[i].getAttribute('data-udise') === lastUdise) {
+          select.selectedIndex = i;
+          break;
+        }
+      }
+    } else {
+      select.selectedIndex = 1; // पहिली शाळा
+    }
+
+    handleSchoolChange();
   };
 </script>
 

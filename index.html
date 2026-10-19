@@ -44,7 +44,6 @@
       border: 1px solid #e2e8f0;
     }
 
-    /* Attractive Header */
     .header-section {
       text-align: center;
       padding-bottom: 16px;
@@ -65,23 +64,22 @@
 
     .header-section h2 {
       margin: 4px 0;
-      font-size: 23px;
+      font-size: 22px;
       font-weight: 700;
       color: var(--primary);
     }
 
     .header-section h3 {
       margin: 0;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
       color: var(--text-muted);
     }
 
-    /* Section Styling */
     .section-title {
       font-size: 15px;
       font-weight: 700;
-      margin-top: 22px;
+      margin-top: 20px;
       margin-bottom: 12px;
       background: linear-gradient(90deg, var(--primary-subtle) 0%, rgba(239, 246, 255, 0.2) 100%);
       color: var(--primary);
@@ -135,7 +133,6 @@
       margin-bottom: 8px;
     }
 
-    /* Table Styling */
     .table-container {
       overflow-x: auto;
       margin-bottom: 16px;
@@ -204,7 +201,6 @@
       font-size: 14.5px;
     }
 
-    /* Checklist Table */
     .checklist-table td {
       padding: 10px 8px;
     }
@@ -230,7 +226,12 @@
       accent-color: var(--primary);
     }
 
-    /* Signature Section */
+    .print-val-display {
+      display: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
     .sign-section {
       display: flex;
       justify-content: space-between;
@@ -241,43 +242,43 @@
       color: #1e293b;
     }
 
-    /* Action Buttons */
+    /* सिंगल स्मार्ट ॲक्शन बटण */
     .btn-container {
       margin-top: 30px;
       display: flex;
       justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
     }
 
-    .btn {
-      padding: 10px 22px;
-      font-size: 14px;
+    .single-action-btn {
+      padding: 14px 28px;
+      font-size: 16px;
       font-weight: 700;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-      transition: all 0.2s ease;
+      gap: 10px;
+      background: linear-gradient(135deg, #1e40af 0%, #0f766e 100%);
+      color: white;
+      box-shadow: 0 4px 14px rgba(30, 64, 175, 0.35);
+      transition: all 0.25s ease;
     }
 
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+    .single-action-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(30, 64, 175, 0.45);
     }
 
-    .btn-primary { background-color: var(--primary); color: white; }
-    .btn-success { background-color: var(--secondary); color: white; }
-    .btn-secondary { background-color: #64748b; color: white; }
+    .single-action-btn:active {
+      transform: translateY(0);
+    }
 
     @media (max-width: 650px) {
       .form-container { padding: 15px 12px; }
       .form-row { flex-direction: column; gap: 0; }
       .sign-section { flex-direction: column; gap: 35px; text-align: center; }
-      .btn { width: 100%; justify-content: center; }
+      .single-action-btn { width: 100%; justify-content: center; font-size: 15px; padding: 14px 10px; }
     }
 
     @media print {
@@ -289,6 +290,7 @@
         max-width: 100%;
       }
       .btn-container, .header-badge { display: none !important; }
+      
       .num-input, input, textarea, select {
         border: none !important;
         background: transparent !important;
@@ -300,6 +302,15 @@
         background: #f1f5f9 !important;
         border-left: 3px solid #000 !important;
         color: #000 !important;
+      }
+
+      .radio-group {
+        display: none !important;
+      }
+
+      .print-val-display {
+        display: block !important;
+        text-align: center;
       }
     }
   </style>
@@ -316,7 +327,6 @@
 
   <div class="section-title">१. शाळेची प्राथमिक माहिती</div>
   
-  <!-- तुमच्या कोडचा पहिला भाग (शाळा निवड व यु-डायस कोड) -->
   <div class="form-row">
     <div class="form-group" style="flex: 2;">
       <label for="schoolName">शाळेचे नाव निवडा:</label>
@@ -345,7 +355,6 @@
     </div>
   </div>
 
-  <!-- तुमच्या कोडचा दुसरा भाग (मुख्याध्यापक नाव व भेट दिनांक) -->
   <div class="form-row">
     <div class="form-group" style="flex: 2;">
       <label for="headmasterName">मुख्याध्यापकांचे नाव:</label>
@@ -402,9 +411,10 @@
           <td style="text-align: left;">शाळेचे जनरल रजिस्टर (दाखल-खारीज नोंदवही) अद्ययावत आहे का?</td>
           <td>
             <div class="radio-group">
-              <label class="radio-label"><input type="radio" name="chk1" value="होय"> [ ] होय</label>
-              <label class="radio-label"><input type="radio" name="chk1" value="नाही"> [ ] नाही</label>
+              <label class="radio-label"><input type="radio" name="chk1" value="होय" onchange="updatePrintChecklist(1, 'होय')"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk1" value="नाही" onchange="updatePrintChecklist(1, 'नाही')"> [ ] नाही</label>
             </div>
+            <div class="print-val-display" id="print_chk1">-</div>
           </td>
         </tr>
         <tr>
@@ -412,9 +422,10 @@
           <td style="text-align: left;">वर्गवार दैनंदिन हजेरीपट आणि जनरल रजिस्टर मधील पटसंख्या जुळते का?</td>
           <td>
             <div class="radio-group">
-              <label class="radio-label"><input type="radio" name="chk2" value="होय"> [ ] होय</label>
-              <label class="radio-label"><input type="radio" name="chk2" value="नाही"> [ ] नाही</label>
+              <label class="radio-label"><input type="radio" name="chk2" value="होय" onchange="updatePrintChecklist(2, 'होय')"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk2" value="नाही" onchange="updatePrintChecklist(2, 'नाही')"> [ ] नाही</label>
             </div>
+            <div class="print-val-display" id="print_chk2">-</div>
           </td>
         </tr>
         <tr>
@@ -422,9 +433,10 @@
           <td style="text-align: left;">सरल (Student Portal) वरील विद्यार्थी संख्या आणि हजेरीपटावरील संख्या एकसमान आहे का?</td>
           <td>
             <div class="radio-group">
-              <label class="radio-label"><input type="radio" name="chk3" value="होय"> [ ] होय</label>
-              <label class="radio-label"><input type="radio" name="chk3" value="नाही"> [ ] नाही</label>
+              <label class="radio-label"><input type="radio" name="chk3" value="होय" onchange="updatePrintChecklist(3, 'होय')"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk3" value="नाही" onchange="updatePrintChecklist(3, 'नाही')"> [ ] नाही</label>
             </div>
+            <div class="print-val-display" id="print_chk3">-</div>
           </td>
         </tr>
         <tr>
@@ -432,9 +444,10 @@
           <td style="text-align: left;">शाळेत दुबार (Duplicate) नोंद असलेले विद्यार्थी वगळण्यात आले आहेत का?</td>
           <td>
             <div class="radio-group">
-              <label class="radio-label"><input type="radio" name="chk4" value="होय"> [ ] होय</label>
-              <label class="radio-label"><input type="radio" name="chk4" value="नाही"> [ ] नाही</label>
+              <label class="radio-label"><input type="radio" name="chk4" value="होय" onchange="updatePrintChecklist(4, 'होय')"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk4" value="नाही" onchange="updatePrintChecklist(4, 'नाही')"> [ ] नाही</label>
             </div>
+            <div class="print-val-display" id="print_chk4">-</div>
           </td>
         </tr>
         <tr>
@@ -442,9 +455,10 @@
           <td style="text-align: left;">प्रदीर्घ काळ गैरहजर/स्थलांतरित विद्यार्थ्यांच्या नोंदी पोर्टलवर अद्ययावत केल्या आहेत का?</td>
           <td>
             <div class="radio-group">
-              <label class="radio-label"><input type="radio" name="chk5" value="होय"> [ ] होय</label>
-              <label class="radio-label"><input type="radio" name="chk5" value="नाही"> [ ] नाही</label>
+              <label class="radio-label"><input type="radio" name="chk5" value="होय" onchange="updatePrintChecklist(5, 'होय')"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk5" value="नाही" onchange="updatePrintChecklist(5, 'नाही')"> [ ] नाही</label>
             </div>
+            <div class="print-val-display" id="print_chk5">-</div>
           </td>
         </tr>
         <tr>
@@ -452,9 +466,10 @@
           <td style="text-align: left;">आधार इनव्हॅलिड (Aadhaar Invalid) विद्यार्थ्यांचे आधार अपडेट करण्याचे काम सुरू आहे का?</td>
           <td>
             <div class="radio-group">
-              <label class="radio-label"><input type="radio" name="chk6" value="होय"> [ ] होय</label>
-              <label class="radio-label"><input type="radio" name="chk6" value="नाही"> [ ] नाही</label>
+              <label class="radio-label"><input type="radio" name="chk6" value="होय" onchange="updatePrintChecklist(6, 'होय')"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk6" value="नाही" onchange="updatePrintChecklist(6, 'नाही')"> [ ] नाही</label>
             </div>
+            <div class="print-val-display" id="print_chk6">-</div>
           </td>
         </tr>
         <tr>
@@ -462,9 +477,10 @@
           <td style="text-align: left;">स्थलांतर प्रमाणपत्र (TC) घेऊन गेलेल्या सर्व विद्यार्थ्यांची नावे शाळेने स्वतःच्या यूडायस+ मधून ऑनलाईन देखील कमी केले आहेत का?</td>
           <td>
             <div class="radio-group">
-              <label class="radio-label"><input type="radio" name="chk7" value="होय"> [ ] होय</label>
-              <label class="radio-label"><input type="radio" name="chk7" value="नाही"> [ ] नाही</label>
+              <label class="radio-label"><input type="radio" name="chk7" value="होय" onchange="updatePrintChecklist(7, 'होय')"> [ ] होय</label>
+              <label class="radio-label"><input type="radio" name="chk7" value="नाही" onchange="updatePrintChecklist(7, 'नाही')"> [ ] नाही</label>
             </div>
+            <div class="print-val-display" id="print_chk7">-</div>
           </td>
         </tr>
       </tbody>
@@ -482,10 +498,11 @@
     <div>केंद्रप्रमुखाची स्वाक्षरी व नाव</div>
   </div>
 
+  <!-- सर्व कामांसाठी एकच बटन -->
   <div class="btn-container">
-    <button type="button" class="btn btn-primary" onclick="saveData()">💾 डेटा सेव्ह करा</button>
-    <button type="button" class="btn btn-success" onclick="window.print()">🖨️ प्रिंट / PDF काढा</button>
-    <button type="button" class="btn btn-secondary" onclick="resetCurrentForm()">🔄 फॉर्म पूर्ववत करा</button>
+    <button type="button" class="single-action-btn" onclick="savePrintAndNext()">
+      💾 सेव्ह करा, PDF/प्रिंट काढा व पुढील फॉर्म भरा ➔
+    </button>
   </div>
 
 </div>
@@ -504,7 +521,17 @@
     { id: 10, name: "दहावा" }
   ];
 
-  // शाळा निवडल्यावर आपोआप यु-डायस व मुख्याध्यापकांचे नाव भरणारे फंक्शन
+  function updatePrintChecklist(index, val) {
+    var pDiv = document.getElementById('print_chk' + index);
+    if (val === 'होय') {
+      pDiv.innerHTML = '<span style="font-size:15px; color:#0f766e;">[ ✓ ] होय</span>';
+    } else if (val === 'नाही') {
+      pDiv.innerHTML = '<span style="font-size:15px; color:#dc2626;">[ ✓ ] नाही</span>';
+    } else {
+      pDiv.innerHTML = '-';
+    }
+  }
+
   function handleSchoolChange() {
     var select = document.getElementById('schoolName');
     var selectedOption = select.options[select.selectedIndex];
@@ -522,7 +549,6 @@
     }
   }
 
-  // वर्गवार तक्ता तयार करणे
   function renderTable() {
     var tbody = document.getElementById('studentTableBody');
     var html = '';
@@ -542,7 +568,6 @@
     tbody.innerHTML = html;
   }
 
-  // तफावत काढणे
   function calculateRow(id) {
     var regVal = parseInt(document.getElementById('reg_' + id).value) || 0;
     var portalVal = parseInt(document.getElementById('portal_' + id).value) || 0;
@@ -561,7 +586,6 @@
     calculateTotals();
   }
 
-  // एकूण बेरीज काढणे
   function calculateTotals() {
     var totalReg = 0, totalPortal = 0, totalAadhar = 0, totalPres = 0;
 
@@ -590,12 +614,11 @@
     }
   }
 
-  // शाळेचा डेटा LocalStorage मध्ये सेव्ह करणे
-  function saveData() {
+  function internalSave() {
     var udise = document.getElementById('udiseCode').value.trim();
     if (!udise) {
       alert('कृपया आधी शाळा निवडा!');
-      return;
+      return false;
     }
 
     var formData = {
@@ -608,15 +631,16 @@
       classData: []
     };
 
-    // चेकलिस्ट सेव्ह करणे
     for (var k = 1; k <= 7; k++) {
       var selectedRadio = document.querySelector('input[name="chk' + k + '"]:checked');
       if (selectedRadio) {
         formData.checklist['chk' + k] = selectedRadio.value;
+        updatePrintChecklist(k, selectedRadio.value);
+      } else {
+        updatePrintChecklist(k, '');
       }
     }
 
-    // पटसंख्या सेव्ह करणे
     for (var i = 0; i < classes.length; i++) {
       var id = classes[i].id;
       formData.classData.push({
@@ -629,11 +653,39 @@
     }
 
     localStorage.setItem('shalaBhet_' + udise, JSON.stringify(formData));
-    localStorage.setItem('lastActiveUdise', udise);
-    alert('या शाळेची माहिती सेव्ह झाली आहे!');
+    return true;
   }
 
-  // सेव्ह केलेला डेटा लोड करणे
+  // एकाच बटणावर चालणारे मास्टर फंक्शन:
+  function savePrintAndNext() {
+    // १. डेटा सेव्ह करणे
+    if (!internalSave()) return;
+
+    // २. प्रिंट / PDF सेव्ह डायलॉग उघडणे
+    window.print();
+
+    // ३. प्रिंटिंग पूर्ण झाल्यानंतर किंवा रद्द केल्यानंतर पुढचा नवीन फॉर्म तयार करणे
+    setTimeout(function() {
+      var select = document.getElementById('schoolName');
+      var nextIndex = select.selectedIndex + 1;
+
+      // पुढील शाळा निवडणे (असल्यास)
+      if (nextIndex < select.options.length) {
+        select.selectedIndex = nextIndex;
+        handleSchoolChange();
+      } else {
+        // सर्व शाळा भरून झाल्या असल्यास फॉर्म स्वच्छ करणे
+        select.selectedIndex = 0;
+        document.getElementById('udiseCode').value = '';
+        document.getElementById('headmasterName').value = '';
+        clearTableInputs();
+      }
+
+      // पेज वर स्क्रोल करणे
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 1000);
+  }
+
   function loadSavedSchoolData(udise) {
     if (!udise) return;
     var saved = localStorage.getItem('shalaBhet_' + udise);
@@ -647,13 +699,14 @@
       if (data.visitDate) document.getElementById('visitDate').value = data.visitDate;
       if (data.remarks) document.getElementById('remarks').value = data.remarks;
 
-      if (data.checklist) {
-        for (var k = 1; k <= 7; k++) {
-          var val = data.checklist['chk' + k];
-          if (val) {
-            var r = document.querySelector('input[name="chk' + k + '"][value="' + val + '"]');
-            if (r) r.checked = true;
-          }
+      for (var k = 1; k <= 7; k++) {
+        var val = data.checklist ? data.checklist['chk' + k] : null;
+        if (val) {
+          var r = document.querySelector('input[name="chk' + k + '"][value="' + val + '"]');
+          if (r) r.checked = true;
+          updatePrintChecklist(k, val);
+        } else {
+          updatePrintChecklist(k, '');
         }
       }
 
@@ -688,43 +741,21 @@
     document.getElementById('remarks').value = '';
     var radios = document.querySelectorAll('input[type="radio"]');
     radios.forEach(function(r) { r.checked = false; });
-  }
-
-  function resetCurrentForm() {
-    if (confirm('तुम्हाला या शाळेचा भरलेला डेटा स्वच्छ (Clear) करायचा आहे का?')) {
-      var udise = document.getElementById('udiseCode').value.trim();
-      if (udise) {
-        localStorage.removeItem('shalaBhet_' + udise);
-      }
-      clearTableInputs();
+    for (var k = 1; k <= 7; k++) {
+      updatePrintChecklist(k, '');
     }
   }
 
-  // पेज लोड झाल्यावर सुरू करा
   window.onload = function() {
     renderTable();
 
-    // आजची तारीख सेट करणे
     var dateField = document.getElementById('visitDate');
     if (!dateField.value) {
       dateField.value = new Date().toISOString().split('T')[0];
     }
 
-    // शेवटची शाळा लोड करणे (किंवा डिफॉल्ट पहिली शाळा)
-    var lastUdise = localStorage.getItem('lastActiveUdise');
     var select = document.getElementById('schoolName');
-    
-    if (lastUdise) {
-      for (var i = 0; i < select.options.length; i++) {
-        if (select.options[i].getAttribute('data-udise') === lastUdise) {
-          select.selectedIndex = i;
-          break;
-        }
-      }
-    } else {
-      select.selectedIndex = 1; // पहिली शाळा
-    }
-
+    select.selectedIndex = 1;
     handleSchoolChange();
   };
 </script>

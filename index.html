@@ -135,6 +135,54 @@
       margin-bottom: 8px;
     }
 
+    /* Dynamic Class Adder Bar */
+    .class-adder-bar {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      background: #f8fafc;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .class-adder-bar label {
+      font-weight: 700;
+      font-size: 14px;
+      color: #1e3a8a;
+    }
+
+    .class-adder-bar select {
+      padding: 6px 12px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1.5px solid #cbd5e1;
+      outline: none;
+      font-weight: 600;
+      min-width: 150px;
+    }
+
+    .btn-add-class {
+      padding: 7px 16px;
+      font-size: 13.5px;
+      font-weight: 700;
+      background-color: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.2s;
+    }
+
+    .btn-add-class:hover {
+      background-color: #1d4ed8;
+    }
+
     /* Table Styling */
     .table-container {
       overflow-x: auto;
@@ -204,6 +252,22 @@
       font-size: 14.5px;
     }
 
+    .btn-remove-row {
+      background: #fee2e2;
+      color: #dc2626;
+      border: 1px solid #fca5a5;
+      border-radius: 4px;
+      padding: 3px 8px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .btn-remove-row:hover {
+      background: #fca5a5;
+      color: #991b1b;
+    }
+
     .checklist-table td {
       padding: 10px 8px;
     }
@@ -245,7 +309,7 @@
       color: #1e293b;
     }
 
-    /* भाग २: हमीपत्र विभाग स्टाईल */
+    /* भाग २: हमीपत्र विभाग */
     .undertaking-sheet {
       margin-top: 40px;
       padding-top: 25px;
@@ -323,7 +387,7 @@
       font-size: 15.5px;
     }
 
-    /* मुख्य बटण स्टाईल */
+    /* मुख्य बटण */
     .btn-container {
       margin-top: 35px;
       display: flex;
@@ -354,6 +418,7 @@
     @media (max-width: 650px) {
       .form-container { padding: 15px 12px; }
       .form-row { flex-direction: column; gap: 0; }
+      .class-adder-bar { flex-direction: column; align-items: stretch; }
       .sign-section, .footer-section { flex-direction: column; gap: 30px; text-align: center; }
       .single-main-btn { width: 100%; justify-content: center; font-size: 15px; padding: 14px 8px; }
     }
@@ -370,7 +435,7 @@
         padding: 0 !important;
         max-width: 100% !important;
       }
-      .btn-container, .header-badge { 
+      .btn-container, .header-badge, .class-adder-bar, .action-col { 
         display: none !important; 
       }
       
@@ -382,7 +447,6 @@
         font-weight: 600;
       }
 
-      /* उभी निळी लाईन प्रिंटमध्ये येणार नाही */
       .section-title {
         background: transparent !important;
         border: none !important;
@@ -402,7 +466,6 @@
         text-align: center;
       }
 
-      /* हमीपत्र दुसऱ्या पानावर सुरू होण्यासाठी */
       .undertaking-sheet {
         page-break-before: always;
         border-top: none !important;
@@ -470,17 +533,38 @@
   </div>
 
   <div class="section-title">२. वर्गवार विद्यार्थी पट व उपस्थिती पडताळणी</div>
+  
+  <div class="class-adder-bar">
+    <label for="selectClassToAdd">वर्ग निवडा:</label>
+    <select id="selectClassToAdd">
+      <option value="1">इयत्ता पहिली (१)</option>
+      <option value="2">इयत्ता दुसरी (२)</option>
+      <option value="3">इयत्ता तिसरी (३)</option>
+      <option value="4">इयत्ता चौथी (४)</option>
+      <option value="5">इयत्ता पाचवी (५)</option>
+      <option value="6">इयत्ता सहावी (६)</option>
+      <option value="7">इयत्ता सातवी (७)</option>
+      <option value="8">इयत्ता आठवी (८)</option>
+      <option value="9">इयत्ता नववी (९)</option>
+      <option value="10">इयत्ता दहावी (१०)</option>
+    </select>
+    <button type="button" class="btn-add-class" onclick="addClassFromDropdown()">
+      ➕ हा वर्ग जोडा
+    </button>
+  </div>
+
   <div class="table-container">
     <table>
       <thead>
         <tr>
           <th style="width: 6%;">अ.क्र.</th>
-          <th style="width: 12%;">वर्ग</th>
+          <th style="width: 14%;">वर्ग</th>
           <th>हजेरीपटावरील एकूण विद्यार्थी (Register)</th>
           <th>सरल पोर्टलवरील एकूण विद्यार्थी</th>
           <th>आधार प्रमाणित (Valid) विद्यार्थी</th>
           <th>प्रत्यक्ष उपस्थित विद्यार्थी (भेटीच्या दिवशी)</th>
-          <th style="width: 15%;">तफावत (रजिस्टर - पोर्टल)</th>
+          <th style="width: 14%;">तफावत (रजिस्टर - पोर्टल)</th>
+          <th class="action-col" style="width: 7%;">क्रिया</th>
         </tr>
       </thead>
       <tbody id="studentTableBody"></tbody>
@@ -492,6 +576,7 @@
           <td id="totalAadhar">0</td>
           <td id="totalPresent">0</td>
           <td id="totalDiff">0</td>
+          <td class="action-col"></td>
         </tr>
       </tfoot>
     </table>
@@ -661,18 +746,20 @@
 </div>
 
 <script>
-  var classes = [
-    { id: 1, name: "पहिला" },
-    { id: 2, name: "दुसरा" },
-    { id: 3, name: "तिसरा" },
-    { id: 4, name: "चौथा" },
-    { id: 5, name: "पाचवा" },
-    { id: 6, name: "सहावा" },
-    { id: 7, name: "सातवा" },
-    { id: 8, name: "आठवा" },
-    { id: 9, name: "नववा" },
-    { id: 10, name: "दहावा" }
-  ];
+  var classMaster = {
+    1: "इयत्ता पहिली",
+    2: "इयत्ता दुसरी",
+    3: "इयत्ता तिसरी",
+    4: "इयत्ता चौथी",
+    5: "इयत्ता पाचवी",
+    6: "इयत्ता सहावी",
+    7: "इयत्ता सातवी",
+    8: "इयत्ता आठवी",
+    9: "इयत्ता नववी",
+    10: "इयत्ता दहावी"
+  };
+
+  var activeClasses = [];
 
   function updatePrintChecklist(index, val) {
     var pDiv = document.getElementById('print_chk' + index);
@@ -706,7 +793,6 @@
     document.getElementById('udiseCode').value = udise;
     document.getElementById('headmasterName').value = hm;
 
-    // हमीपत्रातील माहिती आपोआप अपडेट करणे
     document.getElementById('dispSchoolName').innerText = sName || '______________';
     document.getElementById('dispUdise').innerText = udise || '______________';
     document.getElementById('dispHmName').innerText = hm || '______________';
@@ -716,42 +802,136 @@
     if (udise) {
       loadSavedSchoolData(udise);
     } else {
+      activeClasses = [1, 2, 3, 4];
+      renderDynamicTable();
       clearTableInputs();
     }
   }
 
-  function renderTable() {
-    var tbody = document.getElementById('studentTableBody');
-    var html = '';
+  function addClassFromDropdown() {
+    var classSelect = document.getElementById('selectClassToAdd');
+    var classId = parseInt(classSelect.value, 10);
 
-    for (var i = 0; i < classes.length; i++) {
-      var c = classes[i];
-      html += '<tr>' +
-        '<td>' + c.id + '</td>' +
-        '<td><b>' + c.name + '</b></td>' +
-        '<td><input type="number" min="0" class="num-input reg-in" id="reg_' + c.id + '" oninput="calculateRow(' + c.id + ')"></td>' +
-        '<td><input type="number" min="0" class="num-input portal-in" id="portal_' + c.id + '" oninput="calculateRow(' + c.id + ')"></td>' +
-        '<td><input type="number" min="0" class="num-input aadhar-in" id="aadhar_' + c.id + '" oninput="calculateTotals()"></td>' +
-        '<td><input type="number" min="0" class="num-input pres-in" id="pres_' + c.id + '" oninput="calculateTotals()"></td>' +
-        '<td class="diff-cell" id="diff_' + c.id + '">0</td>' +
+    if (activeClasses.indexOf(classId) !== -1) {
+      alert(classMaster[classId] + ' हा वर्ग आधीच टेबलमध्ये जोडलेला आहे!');
+      return;
+    }
+
+    activeClasses.push(classId);
+    activeClasses.sort(function(a, b) { return a - b; });
+    renderDynamicTable();
+
+    if (classId < 10) {
+      classSelect.value = classId + 1;
+    }
+  }
+
+  function removeClassRow(classId) {
+    var idx = activeClasses.indexOf(classId);
+    if (idx !== -1) {
+      activeClasses.splice(idx, 1);
+      renderDynamicTable();
+      calculateTotals();
+    }
+  }
+
+  function renderDynamicTable() {
+    var tbody = document.getElementById('studentTableBody');
+    var existingValues = {};
+
+    for (var i = 0; i < activeClasses.length; i++) {
+      var id = activeClasses[i];
+      if (document.getElementById('reg_' + id)) {
+        existingValues[id] = {
+          reg: document.getElementById('reg_' + id).value,
+          portal: document.getElementById('portal_' + id).value,
+          aadhar: document.getElementById('aadhar_' + id).value,
+          pres: document.getElementById('pres_' + id).value
+        };
+      }
+    }
+
+    var html = '';
+    for (var k = 0; k < activeClasses.length; k++) {
+      var cId = activeClasses[k];
+      var cName = classMaster[cId];
+      var srNo = k + 1;
+
+      html += '<tr id="row_' + cId + '">' +
+        '<td>' + srNo + '</td>' +
+        '<td><b>' + cName + '</b></td>' +
+        '<td><input type="number" min="0" class="num-input reg-in" id="reg_' + cId + '" oninput="calculateRow(' + cId + ')" onblur="fillZeroIfEmpty(this)"></td>' +
+        '<td><input type="number" min="0" class="num-input portal-in" id="portal_' + cId + '" oninput="calculateRow(' + cId + ')" onblur="fillZeroIfEmpty(this)"></td>' +
+        '<td><input type="number" min="0" class="num-input aadhar-in" id="aadhar_' + cId + '" oninput="calculateTotals()" onblur="fillZeroIfEmpty(this)"></td>' +
+        '<td><input type="number" min="0" class="num-input pres-in" id="pres_' + cId + '" oninput="calculateTotals()" onblur="fillZeroIfEmpty(this)"></td>' +
+        '<td class="diff-cell" id="diff_' + cId + '">0</td>' +
+        '<td class="action-col"><button type="button" class="btn-remove-row" onclick="removeClassRow(' + cId + ')" title="हा वर्ग काढा">❌</button></td>' +
       '</tr>';
     }
+
     tbody.innerHTML = html;
+
+    for (var m = 0; m < activeClasses.length; m++) {
+      var curId = activeClasses[m];
+      if (existingValues[curId]) {
+        document.getElementById('reg_' + curId).value = existingValues[curId].reg || '';
+        document.getElementById('portal_' + curId).value = existingValues[curId].portal || '';
+        document.getElementById('aadhar_' + curId).value = existingValues[curId].aadhar || '';
+        document.getElementById('pres_' + curId).value = existingValues[curId].pres || '';
+        calculateRow(curId);
+      }
+    }
+
+    calculateTotals();
+  }
+
+  // इनपुटमधून बाहेर आल्यावर रिकामा असेल तर शून्य भरणे
+  function fillZeroIfEmpty(inputElem) {
+    if (inputElem.value.trim() === '') {
+      inputElem.value = '0';
+      calculateTotals();
+    }
+  }
+
+  // सर्व रिकाम्या रकान्यांमध्ये शून्य भरणे व तपासणे
+  function ensureAllFieldsFilled() {
+    var hasEmpty = false;
+    for (var i = 0; i < activeClasses.length; i++) {
+      var id = activeClasses[i];
+      var fields = ['reg_' + id, 'portal_' + id, 'aadhar_' + id, 'pres_' + id];
+      for (var f = 0; f < fields.length; f++) {
+        var elem = document.getElementById(fields[f]);
+        if (elem && elem.value.trim() === '') {
+          hasEmpty = true;
+          elem.value = '0'; // आपोआप 0 भरणे
+        }
+      }
+    }
+
+    if (hasEmpty) {
+      calculateTotals();
+    }
+    return true;
   }
 
   function calculateRow(id) {
-    var regVal = parseInt(document.getElementById('reg_' + id).value) || 0;
-    var portalVal = parseInt(document.getElementById('portal_' + id).value) || 0;
+    var regElem = document.getElementById('reg_' + id);
+    var portalElem = document.getElementById('portal_' + id);
+    if (!regElem || !portalElem) return;
+
+    var regVal = parseInt(regElem.value) || 0;
+    var portalVal = parseInt(portalElem.value) || 0;
     var diff = regVal - portalVal;
 
     var diffCell = document.getElementById('diff_' + id);
-    diffCell.innerText = diff;
-
-    diffCell.className = "diff-cell";
-    if (diff < 0) {
-      diffCell.classList.add("diff-negative");
-    } else if (diff > 0) {
-      diffCell.classList.add("diff-positive");
+    if (diffCell) {
+      diffCell.innerText = diff;
+      diffCell.className = "diff-cell";
+      if (diff < 0) {
+        diffCell.classList.add("diff-negative");
+      } else if (diff > 0) {
+        diffCell.classList.add("diff-positive");
+      }
     }
 
     calculateTotals();
@@ -760,12 +940,17 @@
   function calculateTotals() {
     var totalReg = 0, totalPortal = 0, totalAadhar = 0, totalPres = 0;
 
-    for (var i = 0; i < classes.length; i++) {
-      var id = classes[i].id;
-      totalReg += parseInt(document.getElementById('reg_' + id).value) || 0;
-      totalPortal += parseInt(document.getElementById('portal_' + id).value) || 0;
-      totalAadhar += parseInt(document.getElementById('aadhar_' + id).value) || 0;
-      totalPres += parseInt(document.getElementById('pres_' + id).value) || 0;
+    for (var i = 0; i < activeClasses.length; i++) {
+      var id = activeClasses[i];
+      var r = document.getElementById('reg_' + id);
+      var p = document.getElementById('portal_' + id);
+      var a = document.getElementById('aadhar_' + id);
+      var pr = document.getElementById('pres_' + id);
+
+      if (r) totalReg += parseInt(r.value) || 0;
+      if (p) totalPortal += parseInt(p.value) || 0;
+      if (a) totalAadhar += parseInt(a.value) || 0;
+      if (pr) totalPres += parseInt(pr.value) || 0;
     }
 
     var totalDiff = totalReg - totalPortal;
@@ -784,9 +969,8 @@
       totalDiffCell.classList.add("diff-positive");
     }
 
-    // हमीपत्रातील विद्यार्थी संख्या आपोआप भरली जाते (जर पोर्टलची बेरीज असेल तर)
     var countField = document.getElementById('studentTotalCount');
-    if (totalPortal > 0) {
+    if (totalPortal >= 0) {
       countField.value = totalPortal;
     }
   }
@@ -798,6 +982,14 @@
       return false;
     }
 
+    if (activeClasses.length === 0) {
+      alert('कृपया किमान एक वर्ग जोडा!');
+      return false;
+    }
+
+    // सर्व रिकाम्या रकान्यांत ० भरले जाईल
+    ensureAllFieldsFilled();
+
     var formData = {
       schoolName: document.getElementById('schoolName').value,
       udiseCode: udise,
@@ -805,6 +997,7 @@
       visitDate: document.getElementById('visitDate').value,
       remarks: document.getElementById('remarks').value,
       studentTotalCount: document.getElementById('studentTotalCount').value,
+      activeClasses: activeClasses,
       checklist: {},
       classData: []
     };
@@ -819,8 +1012,8 @@
       }
     }
 
-    for (var i = 0; i < classes.length; i++) {
-      var id = classes[i].id;
+    for (var i = 0; i < activeClasses.length; i++) {
+      var id = activeClasses[i];
       formData.classData.push({
         id: id,
         reg: document.getElementById('reg_' + id).value,
@@ -850,6 +1043,8 @@
         select.selectedIndex = 0;
         document.getElementById('udiseCode').value = '';
         document.getElementById('headmasterName').value = '';
+        activeClasses = [1, 2, 3, 4];
+        renderDynamicTable();
         clearTableInputs();
       }
 
@@ -861,6 +1056,8 @@
     if (!udise) return;
     var saved = localStorage.getItem('shalaBhet_' + udise);
     if (!saved) {
+      activeClasses = [1, 2, 3, 4];
+      renderDynamicTable();
       clearTableInputs();
       return;
     }
@@ -882,14 +1079,22 @@
         }
       }
 
+      if (data.activeClasses && data.activeClasses.length > 0) {
+        activeClasses = data.activeClasses;
+      } else {
+        activeClasses = [1, 2, 3, 4];
+      }
+
+      renderDynamicTable();
+
       if (data.classData) {
         for (var i = 0; i < data.classData.length; i++) {
           var item = data.classData[i];
           if (document.getElementById('reg_' + item.id)) {
-            document.getElementById('reg_' + item.id).value = item.reg || '';
-            document.getElementById('portal_' + item.id).value = item.portal || '';
-            document.getElementById('aadhar_' + item.id).value = item.aadhar || '';
-            document.getElementById('pres_' + item.id).value = item.pres || '';
+            document.getElementById('reg_' + item.id).value = (item.reg !== undefined && item.reg !== '') ? item.reg : '0';
+            document.getElementById('portal_' + item.id).value = (item.portal !== undefined && item.portal !== '') ? item.portal : '0';
+            document.getElementById('aadhar_' + item.id).value = (item.aadhar !== undefined && item.aadhar !== '') ? item.aadhar : '0';
+            document.getElementById('pres_' + item.id).value = (item.pres !== undefined && item.pres !== '') ? item.pres : '0';
             calculateRow(item.id);
           }
         }
@@ -900,18 +1105,18 @@
   }
 
   function clearTableInputs() {
-    for (var i = 0; i < classes.length; i++) {
-      var id = classes[i].id;
+    for (var i = 0; i < activeClasses.length; i++) {
+      var id = activeClasses[i];
       if (document.getElementById('reg_' + id)) {
-        document.getElementById('reg_' + id).value = '';
-        document.getElementById('portal_' + id).value = '';
-        document.getElementById('aadhar_' + id).value = '';
-        document.getElementById('pres_' + id).value = '';
+        document.getElementById('reg_' + id).value = '0';
+        document.getElementById('portal_' + id).value = '0';
+        document.getElementById('aadhar_' + id).value = '0';
+        document.getElementById('pres_' + id).value = '0';
         calculateRow(id);
       }
     }
     document.getElementById('remarks').value = '';
-    document.getElementById('studentTotalCount').value = '';
+    document.getElementById('studentTotalCount').value = '0';
     var radios = document.querySelectorAll('input[type="radio"]');
     radios.forEach(function(r) { r.checked = false; });
     for (var k = 1; k <= 7; k++) {
@@ -920,7 +1125,8 @@
   }
 
   window.onload = function() {
-    renderTable();
+    activeClasses = [1, 2, 3, 4];
+    renderDynamicTable();
 
     var dateField = document.getElementById('visitDate');
     if (!dateField.value) {

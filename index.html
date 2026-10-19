@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>केंद्रप्रमुख शाळा भेट व संचमान्यता पट पडताळणी प्रपत्र</title>
+  <title>केंद्रप्रमुख शाळा भेट व संचमान्यता पट पडताळणी प्रपत्र आणि हमीपत्र</title>
   <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -44,6 +44,7 @@
       border: 1px solid #e2e8f0;
     }
 
+    /* Header Section */
     .header-section {
       text-align: center;
       padding-bottom: 16px;
@@ -76,6 +77,7 @@
       color: var(--text-muted);
     }
 
+    /* Section Styling */
     .section-title {
       font-size: 15px;
       font-weight: 700;
@@ -133,6 +135,7 @@
       margin-bottom: 8px;
     }
 
+    /* Table Styling */
     .table-container {
       overflow-x: auto;
       margin-bottom: 16px;
@@ -235,15 +238,94 @@
     .sign-section {
       display: flex;
       justify-content: space-between;
-      margin-top: 45px;
+      margin-top: 40px;
       padding: 0 25px;
       font-weight: 700;
       font-size: 14px;
       color: #1e293b;
     }
 
+    /* भाग २: हमीपत्र विभाग स्टाईल */
+    .undertaking-sheet {
+      margin-top: 40px;
+      padding-top: 25px;
+      border-top: 2px dashed #94a3b8;
+      line-height: 1.7;
+      font-size: 15.5px;
+    }
+
+    .doc-header-box {
+      border: 1.5px solid #000;
+      padding: 7px 10px;
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .doc-header-box h2 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .school-info-row {
+      margin-bottom: 10px;
+      font-size: 15.5px;
+    }
+
+    .dynamic-val {
+      font-weight: 700;
+      color: #000;
+    }
+
+    .declaration-title {
+      font-weight: 700;
+      margin-top: 15px;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+
+    .declaration-intro {
+      text-indent: 35px;
+      text-align: justify;
+      margin-bottom: 16px;
+    }
+
+    .rules-list {
+      margin: 0;
+      padding-left: 20px;
+      text-align: justify;
+    }
+
+    .rules-list li {
+      margin-bottom: 10px;
+      padding-left: 5px;
+    }
+
+    .student-count-input {
+      border: none;
+      border-bottom: 1px dashed #000;
+      outline: none;
+      font-weight: 700;
+      font-size: 15px;
+      text-align: center;
+      width: 140px;
+      padding: 0 4px;
+      background: transparent;
+    }
+
+    .footer-section {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-weight: 700;
+      font-size: 15.5px;
+    }
+
+    /* मुख्य बटण स्टाईल */
     .btn-container {
-      margin-top: 30px;
+      margin-top: 35px;
       display: flex;
       justify-content: center;
     }
@@ -272,11 +354,11 @@
     @media (max-width: 650px) {
       .form-container { padding: 15px 12px; }
       .form-row { flex-direction: column; gap: 0; }
-      .sign-section { flex-direction: column; gap: 35px; text-align: center; }
+      .sign-section, .footer-section { flex-direction: column; gap: 30px; text-align: center; }
       .single-main-btn { width: 100%; justify-content: center; font-size: 15px; padding: 14px 8px; }
     }
 
-    /* प्रिंटिंगचे नियम - उभी लाईन पूर्णपणे काढून टाकली आहे */
+    /* प्रिंटिंगचे नियम */
     @media print {
       body { 
         background: transparent !important; 
@@ -319,6 +401,18 @@
         display: block !important;
         text-align: center;
       }
+
+      /* हमीपत्र दुसऱ्या पानावर सुरू होण्यासाठी */
+      .undertaking-sheet {
+        page-break-before: always;
+        border-top: none !important;
+        padding-top: 15px !important;
+        margin-top: 0 !important;
+      }
+
+      .student-count-input {
+        border-bottom: none !important;
+      }
     }
   </style>
 </head>
@@ -326,6 +420,7 @@
 
 <div class="form-container" id="reportForm">
   
+  <!-- ==================== भाग १: शाळा भेट व संचमान्यता प्रपत्र ==================== -->
   <div class="header-section">
     <span class="header-badge">शाळा तपासणी व संचमान्यता पोर्टल</span>
     <h2>केंद्रप्रमुख शाळा भेट व संचमान्यता पट पडताळणी प्रपत्र</h2>
@@ -340,8 +435,8 @@
       <select id="schoolName" name="schoolName" onchange="handleSchoolChange()" required>
         <option value="" data-udise="" data-hm="">-- शाळा निवडा --</option>
         <option value="जि.प.कें.प्रा.शाळा कन्या नागापूर" data-udise="27270804001" data-hm="श्री.बी.डी.राठोड">जि.प.कें.प्रा.शाळा कन्या नागापूर</option>
-        <option value="जि.प.मा.शाळा नागापूर" data-udise="27270804002" data-hm="श्री.ए.बी.गायकवाड">जि.प.मा.शाळा नागापूर</option>
-        <option value="जि.प.प्रा.शाळा डाबी" data-udise="27270804101" data-hm="श्री.एम.आर.फड ">जि.प.प्रा.शाळा डाबी</option>
+        <option value="जि.प.मा.शाळा नागापूर" data-udise="27270804002" data-hm="श्री.ए.बी. गायकवाड">जि.प.मा.शाळा नागापूर</option>
+        <option value="जि.प.प्रा.शाळा डाबी" data-udise="27270804101" data-hm="श्री.एम.आर.फड">जि.प.प्रा.शाळा डाबी</option>
         <option value="जि.प.प्रा.शाळा डाबी तांडा" data-udise="27270804701" data-hm="श्री.एस.जी.फड">जि.प.प्रा.शाळा डाबी तांडा</option>
         <option value="जि.प.प्रा.शाळा वानटाकळी" data-udise="27270804301" data-hm="श्री.आर.बी.जोशी">जि.प.प्रा.शाळा वानटाकळी</option>
         <option value="जि.प.प्रा.शाळा वानटाकळी तांडा" data-udise="27270804302" data-hm="श्री.एम.एन.जाधव">जि.प.प्रा.शाळा वानटाकळी तांडा</option>
@@ -370,7 +465,7 @@
 
     <div class="form-group" style="flex: 1;">
       <label for="visitDate">भेटीचा दिनांक:</label>
-      <input type="date" id="visitDate" name="visitDate" required>
+      <input type="date" id="visitDate" name="visitDate" onchange="updateUndertakingDate()" required>
     </div>
   </div>
 
@@ -505,6 +600,58 @@
     <div>केंद्रप्रमुखाची स्वाक्षरी व नाव</div>
   </div>
 
+
+  <!-- ==================== भाग २: मुख्याध्यापकांचे हमीपत्र ==================== -->
+  <div class="undertaking-sheet">
+    
+    <div class="doc-header-box">
+      <h2>मुख्याध्यापकांचे हमीपत्र / शपथपत्र (संचमान्यता २०२६-२७ करिता)</h2>
+    </div>
+
+    <div class="school-info-row">
+      <b>शाळेचे नाव :-</b> <span class="dynamic-val" id="dispSchoolName">बालाघाट विद्यालय दौनापूर</span>
+    </div>
+
+    <div class="school-info-row" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+      <div>
+        <b>यु-डायस कोड :</b> <span class="dynamic-val" id="dispUdise">27270804202</span>
+      </div>
+      <div>
+        <b>केंद्र -</b> कन्या नागापूर, &nbsp;<b>ता.</b> परळी वै. &nbsp;<b>जि.</b> बीड
+      </div>
+    </div>
+
+    <div class="declaration-title">घोषणापत्र / हमीपत्र :-</div>
+
+    <div class="declaration-intro">
+      मी खाली सही करणारी/करणार <b><span class="dynamic-val" id="dispHmName">श्री.एम.व्ही.कराड</span></b> मुख्याध्यापक, <b><span class="dynamic-val" id="dispDeclSchoolName">बालाघाट विद्यालय दौनापूर</span></b> असे हमीपत्र व शपथपत्र लिहून देतो की......
+    </div>
+
+    <ol class="rules-list">
+      <li>आमच्या शाळेची शैक्षणिक वर्ष 2026-27 ची स्टुडंट्स पोर्टलवरील संचमान्यता विषयक विद्यार्थी संख्या शाळास्तरावरून समुह साधन केंद्र स्तरावर (केंद्रप्रमुख यांच्याकडे) फॉरवर्ड करण्यात आलेली आहे.</li>
+      <li>शाळेत 15 जून ते 30 सप्टेंबर या कालावधीत प्रवेश घेतलेल्या सर्व विद्यार्थ्यांचे प्रवेश अर्ज शाळेत उपलब्ध आहेत.</li>
+      <li>सदर सर्व प्रवेश अर्जांची नोंद शाळेच्या प्रवेश निर्गम रजिस्टरला (General Register) अचूकपणे व विहित मुदतीत करण्यात आली आहे.</li>
+      <li>माहे सप्टेंबर 2026 च्या विद्यार्थी हजेरी पत्रकात या सर्व प्रवेशित विद्यार्थ्यांची हजेरी नियमितपणे नोंदविण्यात आलेली आहे.</li>
+      <li>
+        आमच्या शाळेचे संचमान्यतेसाठी सरल प्रणालीत एकुण 
+        <input type="text" class="student-count-input" id="studentTotalCount" placeholder="....................">
+        विद्यार्थी केंद्र प्रमुख यांच्या LOGIN ला FORWARD केले असून ते सर्व शाळेच्या प्रवेश निर्गम व विद्यार्थी हजेरी पत्रक यावर नोंदलेले आहेत.
+      </li>
+      <li>माझ्या माहितीप्रमाणे व शाळेतील रेकॉर्डनुसार स्टुडंट्स पोर्टलवर संचमान्यतेसाठी फॉरवर्ड केलेल्या विद्यार्थी संख्येत कसलीही अनियमितता नाही. संचमान्यतेसाठी पाठविलेल्या या विद्यार्थी संख्येबाबत भविष्यात कोणताही आक्षेप उद्भवल्यास किंवा कोणतीही तफावत आढळून आल्यास, त्यास मी मुख्याध्यापक वैयक्तिकरित्या व सर्वस्वी जबाबदार राहीन, याची मी हमी देतो.</li>
+    </ol>
+
+    <div class="footer-section">
+      <div class="footer-left">
+        दि. &nbsp;<span id="undFooterDate">______/10/2026</span>
+      </div>
+      <div class="footer-right">
+        मुख्याध्यापक सही
+      </div>
+    </div>
+
+  </div>
+
+  <!-- सर्व कृतींसाठी एकच मुख्य बटण -->
   <div class="btn-container">
     <button type="button" class="single-main-btn" onclick="savePrintAndNext()">
       💾 सेव्ह करा, PDF/प्रिंट काढा व पुढील फॉर्म भरा ➔
@@ -538,15 +685,33 @@
     }
   }
 
+  function updateUndertakingDate() {
+    var vDate = document.getElementById('visitDate').value;
+    var formattedDate = "______/10/2026";
+    if (vDate) {
+      var parts = vDate.split('-');
+      formattedDate = parts[2] + '/' + parts[1] + '/' + parts[0];
+    }
+    document.getElementById('undFooterDate').innerText = formattedDate;
+  }
+
   function handleSchoolChange() {
     var select = document.getElementById('schoolName');
     var selectedOption = select.options[select.selectedIndex];
     
+    var sName = selectedOption.value || '';
     var udise = selectedOption.getAttribute('data-udise') || '';
     var hm = selectedOption.getAttribute('data-hm') || '';
 
     document.getElementById('udiseCode').value = udise;
     document.getElementById('headmasterName').value = hm;
+
+    // हमीपत्रातील माहिती आपोआप अपडेट करणे
+    document.getElementById('dispSchoolName').innerText = sName || '______________';
+    document.getElementById('dispUdise').innerText = udise || '______________';
+    document.getElementById('dispHmName').innerText = hm || '______________';
+    document.getElementById('dispDeclSchoolName').innerText = sName || '______________';
+    updateUndertakingDate();
 
     if (udise) {
       loadSavedSchoolData(udise);
@@ -618,6 +783,12 @@
     } else if (totalDiff > 0) {
       totalDiffCell.classList.add("diff-positive");
     }
+
+    // हमीपत्रातील विद्यार्थी संख्या आपोआप भरली जाते (जर पोर्टलची बेरीज असेल तर)
+    var countField = document.getElementById('studentTotalCount');
+    if (totalPortal > 0) {
+      countField.value = totalPortal;
+    }
   }
 
   function internalSave() {
@@ -633,6 +804,7 @@
       headmasterName: document.getElementById('headmasterName').value,
       visitDate: document.getElementById('visitDate').value,
       remarks: document.getElementById('remarks').value,
+      studentTotalCount: document.getElementById('studentTotalCount').value,
       checklist: {},
       classData: []
     };
@@ -697,6 +869,7 @@
       var data = JSON.parse(saved);
       if (data.visitDate) document.getElementById('visitDate').value = data.visitDate;
       if (data.remarks) document.getElementById('remarks').value = data.remarks;
+      if (data.studentTotalCount) document.getElementById('studentTotalCount').value = data.studentTotalCount;
 
       for (var k = 1; k <= 7; k++) {
         var val = data.checklist ? data.checklist['chk' + k] : null;
@@ -738,6 +911,7 @@
       }
     }
     document.getElementById('remarks').value = '';
+    document.getElementById('studentTotalCount').value = '';
     var radios = document.querySelectorAll('input[type="radio"]');
     radios.forEach(function(r) { r.checked = false; });
     for (var k = 1; k <= 7; k++) {

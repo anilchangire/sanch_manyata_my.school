@@ -221,25 +221,44 @@
     <h3>शैक्षणिक वर्ष: २०२६-२७</h3>
   </div>
 
-  <div class="section-title">१. शाळेची प्राथमिक माहिती</div>
-  <div class="grid-info">
-    <div class="form-group" style="grid-column: span 2;">
-      <label>शाळेचे नाव व केंद्र:</label>
-      <input type="text" id="schoolName" value="संत तुकाराम विद्यालय नागापूर , केंद्र -कन्या नागापूर, ता.परळी वै. जि.बीड">
-    </div>
-    <div class="form-group">
-      <label>यु-डायस कोड:</label>
-      <input type="text" id="udiseCode" value="27270804004">
-    </div>
-    <div class="form-group">
-      <label>भेट दिनांक:</label>
-      <input type="date" id="visitDate">
-    </div>
-    <div class="form-group" style="grid-column: span 2;">
-      <label>मुख्याध्यापकांचे नाव:</label>
-      <input type="text" id="hmName" value="श्री. एन.पी.मुंडे">
-    </div>
-  </div>
+  <label for="schoolName">शाळेचे नाव निवडा:</label>
+                                <select id="schoolName" name="schoolName" required>
+                                    <option value="" data-udise="" data-hm="">-- शाळा निवडा --</option>
+                                    <option value="जि.प.कें.प्रा.शाळा कन्या नागापूर" data-udise="27270804001" data-hm="श्री.बी.डी.राठोड">जि.प.कें.प्रा.शाळा कन्या नागापूर</option>
+                                    <option value="जि.प.मा.शाळा नागापूर" data-udise="27270804002" data-hm="श्री.ए बी गायकवाड">जि.प.मा.शाळा नागापूर</option>
+                                    <option value="जि.प.प्रा.शाळा डाबी" data-udise="27270804101" data-hm="श्री.एम.आर.फड ">जि.प.प्रा.शाळा डाबी</option>
+                                    <option value="जि.प.प्रा.शाळा डाबी तांडा" data-udise="27270804701" data-hm="श्री.एस.जी.फड">जि.प.प्रा.शाळा डाबी तांडा</option>
+                                    <option value="जि.प.प्रा.शाळा वानटाकळी" data-udise="27270804301" data-hm="श्री.आर.बी.जोशी">जि.प.प्रा.शाळा वानटाकळी</option>
+                                    <option value="जि.प.प्रा.शाळा वानटाकळी तांडा" data-udise="27270804302" data-hm="श्री.एम.एन.जाधव">जि.प.प्रा.शाळा वानटाकळी तांडा</option>
+                                    <option value="जि.प.प्रा.शाळा एकबाली तांडा" data-udise="27280100401" data-hm="श्री.के.बी.माडजे">जि.प.प्रा.शाळा एकबाली तांडा</option>
+                                    <option value="जि.प.प्रा.शाळा दौनापुर तांडा" data-udise="27270804601" data-hm="श्रीमती एस.के.लाड">जि.प.प्रा.शाळा दौनापुर तांडा</option>
+                                    <option value="जि.प.प्रा.शाळा दौनापूर" data-udise="27270804201" data-hm="श्री.आर.टी.मंत्रे">जि.प.प्रा.शाळा दौनापूर</option>
+                                    <option value="जि.प.प्रा.शाळा लिंबूटा तांडा" data-udise="27270804801" data-hm="श्री.एम.बी.बडगिरे">जि.प.प्रा.शाळा लिंबूटा तांडा</option>
+                                    <option value="जि.प.प्रा.शाळा बहादुरवाडी" data-udise="27270804401" data-hm="श्रीमती चिद्दरवार ए.डी">जि.प.प्रा.शाळा बहादुरवाडी</option>
+                                    <option value="संत तुकाराम प्राथमिक विद्यालय नागापूर" data-udise="27270804004" data-hm="श्री.एन.पी.मुंडे">संत तुकाराम प्राथमिक विद्यालय नागापूर</option>
+                                    <option value="रमाबाई प्राथमिक शाळा नागापूर" data-udise="27270804003" data-hm="श्रीमती एस.एस.बनसोडे">रमाबाई प्राथमिक शाळा नागापूर</option>
+                                    <option value="बालाघाट विद्यालय दौनापूर" data-udise="27270804202" data-hm="श्री.एम.व्ही.कराड">बालाघाट विद्यालय दौनापूर</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                                <label for="udiseCode">शाळेचा यु-डायस क्रमांक:</label>
+                                <input type="text" id="udiseCode" name="udiseCode" placeholder="आपोआप येईल" readonly style="background-color: #f9f9f9;">
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 15px; margin-bottom: 12px; align-items: flex-end;">
+                            <div class="form-group" style="flex: 2; margin-bottom: 0;">
+                                <label for="headmasterName">मुख्याध्यापकांचे नाव:</label>
+                                <input type="text" id="headmasterName" name="headmasterName" placeholder="आपोआप येईल" readonly style="background-color: #f9f9f9;">
+                            </div>
+
+                            <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                                <label for="visitDate">भेटीचा दिनांक:</label>
+                                <input type="date" id="visitDate" name="visitDate" class="no-pdf-date" required>
+                                <input type="text" id="visitDateFormatted" class="pdf-date-display" readonly style="background-color: #ffffff;">
+                            </div>
+                        </div>
 
   <div class="section-title">२. वर्गवार विद्यार्थी पट व उपस्थिती पडताळणी</div>
   <div class="table-container">
